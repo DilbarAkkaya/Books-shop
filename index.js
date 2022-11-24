@@ -26,12 +26,24 @@ logoDiv.insertAdjacentHTML('afterend', `
 `);
 
 const main = document.createElement('main');
+main.classList.add('main');
 const contentMain = document.createElement('div');
-contentMain.classList.add('contentWrapper');
+contentMain.classList.add('content-wrapper');
 
 const booksContainer = document.createElement('div');
 contentMain.append(booksContainer);
 main.appendChild(contentMain);
+const list = document.createElement('ul');
+contentMain.append(list);
+fetch('./data.json')
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(element => {
+              list.insertAdjacentHTML('beforeend',`<li>${element.imageLink}</li>`)
+            });
+        });
 fragment.append(main);
 body.appendChild(fragment)
 
