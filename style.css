@@ -25,7 +25,7 @@ body {
   font-style: normal;
   font-size: 16px;
   font-weight: 400;
-  color: var(--black-blue);
+  color: var(--aqwa);
 }
 
 a {
@@ -45,7 +45,6 @@ li {
   position: absolute;
   width: 100%;
   background-color: var(--pink);
-  color: var(--black);
   font-weight: 500;
   line-height: 22.4px;
 }
