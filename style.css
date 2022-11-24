@@ -1,0 +1,53 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black-blue);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.content-wrapper {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  font-weight: 500;
+  line-height: 22.4px;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+}
