@@ -34,16 +34,34 @@ const booksContainer = document.createElement('div');
 contentMain.append(booksContainer);
 main.appendChild(contentMain);
 const list = document.createElement('ul');
+list.classList.add('list');
 contentMain.append(list);
-fetch('./data.json')
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            data.forEach(element => {
-              list.insertAdjacentHTML('beforeend',`<li>${element.imageLink}</li>`)
-            });
-        });
+
+async function getData() {
+  await fetch('./data.json')
+  .then(response => {
+      return response.json();
+  })
+  .then(data => {
+      data.forEach(book => {
+        list.insertAdjacentHTML('beforeend',`<li class="card">
+        <img src=${book.imageLink} alt="book image" class="card-img">
+    <div class="card-descr">
+      <p class="author"><span>${book.author}</span></p>
+      <p class="title"><span>${book.title}</span></p>
+      <p class="price">Price: <span>$${book.price}</span></p>
+      <p class="description"><span>${book.description}</span></p>
+      <div class="flex">
+      <a href='#' target='_blank' class="show-more">Show more</a>
+      <button class="button add-bag">Add to bag</button>
+      </div>
+    </div>
+      </li>`)
+      });
+  });
+}
+
+getData();
 fragment.append(main);
 body.appendChild(fragment)
 
