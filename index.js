@@ -29,13 +29,15 @@ const main = document.createElement('main');
 main.classList.add('main');
 const contentMain = document.createElement('div');
 contentMain.classList.add('content-wrapper');
-
-const booksContainer = document.createElement('div');
-contentMain.append(booksContainer);
 main.appendChild(contentMain);
+const sectionWrapper = document.createElement('div');
+sectionWrapper.classList.add('flex')
+contentMain.appendChild(sectionWrapper);
+const sectionFirst = document.createElement('section');
+sectionWrapper.appendChild(sectionFirst);
 const list = document.createElement('ul');
 list.classList.add('list');
-contentMain.append(list);
+sectionFirst.append(list);
 
 async function getData() {
   await fetch('./data.json')
@@ -61,6 +63,24 @@ async function getData() {
 }
 
 getData();
+
+const sectionBag = document.createElement('section');
+const bagWrapper = document.createElement('div');
+bagWrapper.classList.add('bag-wrapper', 'column');
+sectionBag.prepend(bagWrapper);
+const sectionTitle = document.createElement('h2');
+sectionTitle.style.color='var(--aqwa)';
+sectionTitle.textContent='Your shopping bag';
+const bagTotalContainer = document.createElement('div');
+bagTotalContainer.classList.add('total-container');
+bagTotalContainer.insertAdjacentHTML('beforeend',`
+<span class="total-text">Bag Total: $</span>
+<span class="total-cost"> 0 </span>`)
+bagWrapper.prepend(sectionTitle);
+bagWrapper.appendChild(bagTotalContainer);
+sectionWrapper.append(sectionBag);
+
+
 fragment.append(main);
 body.appendChild(fragment)
 
