@@ -59,6 +59,9 @@ li {
   padding: 14px 0;
   color: var(--aqwa);
 }
+.log-wrapper {
+  margin-right: 15px;
+}
 .main {
   padding: 20px 0 20px 0;
   display: flex;
