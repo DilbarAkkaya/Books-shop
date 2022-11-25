@@ -50,7 +50,6 @@ async function getData() {
       <p class="author"><span>${book.author}</span></p>
       <p class="title"><span>${book.title}</span></p>
       <p class="price">Price: <span>$${book.price}</span></p>
-      <p class="description"><span>${book.description}</span></p>
       <div class="flex">
       <a href='#' target='_blank' class="show-more">Show more</a>
       <button class="button add-bag">Add to bag</button>
