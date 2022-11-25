@@ -18,7 +18,7 @@ const linkLogoDiv = document.createElement('a');
 linkLogoDiv.href = "#";
 logoDiv.appendChild(linkLogoDiv);
 const imgLogo = document.createElement('img');
-imgLogo.src='../assets/icons/book.svg';
+imgLogo.src='../../assets/icons/book.svg';
 imgLogo.alt = "logo";
 linkLogoDiv.appendChild(imgLogo);
 logoDiv.insertAdjacentHTML('afterend', `
@@ -40,7 +40,7 @@ list.classList.add('list');
 sectionFirst.append(list);
 
 async function getData() {
-  await fetch('./data.json')
+  await fetch('../../data.json')
   .then(response => {
       return response.json();
   })
