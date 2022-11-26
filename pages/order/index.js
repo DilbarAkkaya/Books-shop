@@ -33,6 +33,10 @@ const main = createNewElement('body', 'main', {class: 'main'});
 const contentMain = createNewElement('main', 'div', {class: 'content-wrapper'});
 const sectionWrapper = createNewElement('main>.content-wrapper', 'div', {class:'flex'});
 const sectionFirst = createNewElement('.content-wrapper>.flex', 'section');
+const sectionBag = createNewElement('.content-wrapper>.flex','section', {class:'section-bag'});
+const bagWrapper = createNewElement('.section-bag', 'div', {class:'bag-wrapper column'});
+const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'}, 'Your shopping bag');
+
 
 
 fragment.prependChild(header);
