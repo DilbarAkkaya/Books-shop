@@ -29,5 +29,13 @@ const linkLogo = createNewElement('.logo-wrapper', 'a', {href: "#", class:'link-
 const imgLogo = createNewElement('.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
 const titleLogo = createNewElement('.header-wrapper', 'h1', {class:'title-main'}, 'Lovely Books store')
 
+const main = createNewElement('body', 'main', {class: 'main'});
+const contentMain = createNewElement('main', 'div', {class: 'content-wrapper'});
+const sectionWrapper = createNewElement('main>.content-wrapper', 'div', {class:'flex'});
+const sectionFirst = createNewElement('.content-wrapper>.flex', 'section');
 
 
+fragment.prependChild(header);
+fragment.appendChild(main);
+
+body.prependChild(fragment)
