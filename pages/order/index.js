@@ -24,8 +24,8 @@ function createNewElement(parentSelector, el, attrs, text) {
 
 const header = document.createElement('header');
 header.className = 'header';
-fragment.append(header);
-body.append(fragment);
+fragment.prepend(header);
+body.prepend(fragment);
 
 //const header = createNewElement('body', 'header', {class:'header'});
 const contentWrapper = createNewElement('header', 'div', {class:'content-wrapper'});
@@ -34,16 +34,15 @@ const logoWrapper = createNewElement('.header-wrapper', 'div', {class:'logo-wrap
 const linkLogo = createNewElement('.logo-wrapper', 'a', {href: "#", class:'link-logo'});
 const imgLogo = createNewElement('.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
 const titleLogo = createNewElement('.header-wrapper', 'h1', {class:'title-main'}, 'Lovely Books store')
-
+/* 
 const main = document.createElement('main');
 main.className = 'main';
 fragment.append(main);
-body.append(fragment)
-//const main = createNewElement('body', 'main', {class: 'main'});
-const contentMain = createNewElement('main', 'div', {class: 'content-wrapper'});
+body.append(fragment) */
+/* const contentMain = createNewElement('main', 'div', {class: 'content-wrapper'});
 const sectionWrapper = createNewElement('main>.content-wrapper', 'div', {class:'flex'});
-const sectionFirst = createNewElement('.content-wrapper>.flex', 'section');
-const sectionBag = createNewElement('.content-wrapper>.flex','section', {class:'section-bag'});
+const sectionFirst = createNewElement('.content-wrapper>.flex', 'section') */;
+const sectionBag = createNewElement('.content-wrapper.flex','section', {class:'section-bag'});
 const bagWrapper = createNewElement('.section-bag', 'div', {class:'bag-wrapper column'});
 const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'}, 'Your shopping bag');
 
