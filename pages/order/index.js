@@ -2,7 +2,7 @@ const fragment = new DocumentFragment();
 const body = document.body;
 
 function createNewElement(parentSelector, el, attrs, text) {
-  const parent = document.querySelector(parentSelector)
+  const parent = document.querySelector(parentSelector);
   const newElement = document.createElement(el);
   if (attrs) {
     for (key in attrs) {
@@ -16,12 +16,18 @@ function createNewElement(parentSelector, el, attrs, text) {
     }
   }
   if (text) {
-    newElement.appendChild(document.createTextNode(text));
+    newElement.innerHTML = text;
   }
-  parent.appendChild(newElement);
+ return parent.append(newElement);
 }
 
-const header = createNewElement('body', 'header', {class:'header'});
+
+const header = document.createElement('header');
+header.className = 'header';
+fragment.append(header);
+body.append(fragment);
+
+//const header = createNewElement('body', 'header', {class:'header'});
 const contentWrapper = createNewElement('header', 'div', {class:'content-wrapper'});
 const headerWrapper = createNewElement('div.content-wrapper', 'div', {class:'header-wrapper'});
 const logoWrapper = createNewElement('.header-wrapper', 'div', {class:'logo-wrapper'});
@@ -29,7 +35,11 @@ const linkLogo = createNewElement('.logo-wrapper', 'a', {href: "#", class:'link-
 const imgLogo = createNewElement('.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
 const titleLogo = createNewElement('.header-wrapper', 'h1', {class:'title-main'}, 'Lovely Books store')
 
-const main = createNewElement('body', 'main', {class: 'main'});
+const main = document.createElement('main');
+main.className = 'main';
+fragment.append(main);
+body.append(fragment)
+//const main = createNewElement('body', 'main', {class: 'main'});
 const contentMain = createNewElement('main', 'div', {class: 'content-wrapper'});
 const sectionWrapper = createNewElement('main>.content-wrapper', 'div', {class:'flex'});
 const sectionFirst = createNewElement('.content-wrapper>.flex', 'section');
@@ -38,8 +48,3 @@ const bagWrapper = createNewElement('.section-bag', 'div', {class:'bag-wrapper c
 const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'}, 'Your shopping bag');
 
 
-
-fragment.prependChild(header);
-fragment.appendChild(main);
-
-body.prependChild(fragment)
