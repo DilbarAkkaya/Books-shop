@@ -134,8 +134,29 @@ li {
 input {
   padding: 10px;
 }
+fieldset div {
+  position: relative;
+  margin-right: 10px;
+}
+input[type="radio"] {
+  appearance: none;
+  position: absolute;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 4px solid var(--aqwa);
+}
+input[type="radio"]:checked {
+  background-color: var(--black);
+  border: 5px solid var(--aqwa);
+}
 label {
   padding: 10px 0 0 0;
+}
+fieldset label {
+  padding: 20px 0 0 20px;
 }
 
 form span {
