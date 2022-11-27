@@ -46,13 +46,13 @@ async function getData() {
   })
   .then(data => {
       data.forEach(book => {
-        list.insertAdjacentHTML('beforeend',`<li class="card">
+        list.insertAdjacentHTML('beforeend',`<li class="card column">
         <img src=${book.imageLink} alt="book image" class="card-img">
     <div class="card-descr">
-      <p class="author"><span>${book.author}</span></p>
-      <p class="title"><span>${book.title}</span></p>
-      <p class="price">Price: <span>$${book.price}</span></p>
-      <div class="flex">
+      <p class="author">${book.author}</p>
+      <p class="title">${book.title}</p>
+      <p class="price">$${book.price}</p>
+      <div class="flex column">
       <a href='#' target='_blank' class="show-more">Show more</a>
       <button class="button">Add to bag</button>
       </div>

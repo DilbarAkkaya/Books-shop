@@ -40,12 +40,12 @@ li {
 
 .list {
   display: grid;
-  grid-template-columns: repeat(3, 280px);
+  grid-template-columns: repeat(3, 320px);
   grid-row-gap: 10px;
   grid-column-gap: 10px;
 }
 .content-wrapper {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -81,27 +81,31 @@ li {
 
 .card{
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
   backdrop-filter: blur(6px);
   border: 1px solid #24C5DB;
   border-radius: 20px;
-  padding: 10px;
-  margin: 5px 7px;
-
+  padding-bottom: 10px;
 }
 .card img{
-  padding: 20px;
   width: 200px;
+  height: 250px;
+  padding: 17px;
   transition: 0.3s all ease;
 }
 .card img:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 .card-descr{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px;
+  align-items: center;
+  padding: 0 0 0 10px;
+  gap: 10px;
+  text-align: center;
 }
 .author{
   font-size: 20px;
@@ -111,15 +115,20 @@ li {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--black);
+ 
+}
+.price {
+  font-size: 20px;
+  font-weight: 700;
 }
 .show-more {
   display: block;
   font-style: italic;
-  padding: 10px;
+  text-align: center;
+  padding-bottom: 10px;
   color: var(--aqwa);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
-  text-decoration: underline;
 }
 .add-bag{
   border-radius: 15px;
@@ -189,7 +198,7 @@ input[type="text"], input[type="date"] {
   margin-top: 20px;
 }
 .button {
-  width: 290px;
+  width: 200px;
   border-radius: 5px;
   cursor: pointer;
   color: var(--white);
