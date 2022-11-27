@@ -5,6 +5,7 @@
   --pink: #ffccbc;
   --grey: #d3e3fc;
   --blue: #77a6f7;
+  --red: #e20e0e;
 }
 
 html {
@@ -130,13 +131,16 @@ li {
   margin-top: 5px;
 }
 
-input[type="text"] {
+input {
   padding: 10px;
 }
 label {
   padding: 10px 0 0 0;
 }
 
+form span {
+  color: var(--red);
+}
 .total-container {
   color: var(--black);
   font-size: 20px;
