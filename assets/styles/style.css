@@ -39,8 +39,10 @@ li {
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
 }
 .content-wrapper {
   max-width: 1200px;
