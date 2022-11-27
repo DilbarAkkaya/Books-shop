@@ -1,43 +1,54 @@
 const body = document.body;
 const fragment = new DocumentFragment();
+
+function createNewElement(parentSelector, el, attrs, text) {
+  const parent = document.querySelector(parentSelector);
+  const newElement = document.createElement(el);
+  if (attrs) {
+    for (key in attrs) {
+      if (key == 'class') {
+        newElement.className = attrs[key];
+      } else if (key == 'id') {
+        newElement.id = attrs[key];
+      } else {
+        newElement.setAttribute(key, attrs[key]);
+      }
+    }
+  }
+  if (text) {
+    newElement.innerHTML = text;
+  }
+ parent.append(newElement);
+ return newElement;
+}
+
 const header = document.createElement('header');
-header.classList.add('header');
-fragment.append(header);
-
-const contentWrapper = document.createElement('div');
-contentWrapper.classList.add('content-wrapper');
-header.appendChild(contentWrapper);
-
-const headerWrapper = document.createElement('div');
-headerWrapper.classList.add('header-wrapper');
-contentWrapper.appendChild(headerWrapper);
-const logoDiv = document.createElement('div');
-logoDiv.style.marginRight = '15px';
-headerWrapper.appendChild(logoDiv);
-const linkLogoDiv = document.createElement('a');
-linkLogoDiv.href = "#";
-logoDiv.appendChild(linkLogoDiv);
-const imgLogo = document.createElement('img');
-imgLogo.src='../../assets/icons/book.svg';
-imgLogo.alt = "logo";
-linkLogoDiv.appendChild(imgLogo);
-logoDiv.insertAdjacentHTML('afterend', `
-<h1>Lovely Books Shop</h1>
-`);
+header.className = 'header';
 
 const main = document.createElement('main');
 main.classList.add('main');
-const contentMain = document.createElement('div');
-contentMain.classList.add('content-wrapper');
-main.appendChild(contentMain);
-const sectionWrapper = document.createElement('div');
-sectionWrapper.classList.add('flex')
-contentMain.appendChild(sectionWrapper);
-const sectionFirst = document.createElement('section');
-sectionWrapper.appendChild(sectionFirst);
-const list = document.createElement('ul');
-list.classList.add('list');
-sectionFirst.append(list);
+
+fragment.prepend(header);
+body.prepend(fragment);
+
+fragment.append(main);
+body.append(fragment);
+
+const contentWrapper = createNewElement('header', 'div', {class:'content-wrapper'});
+const headerWrapper = createNewElement('div.content-wrapper', 'div', {class:'header-wrapper'});
+const logoWrapper = createNewElement('.header-wrapper', 'div', {class:'logo-wrapper'});
+const linkLogo = createNewElement('.logo-wrapper', 'a', {href: "#", class:'link-logo'});
+const imgLogo = createNewElement('.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
+const titleLogo = createNewElement('.header-wrapper', 'h1', {class:'title-main'}, 'Lovely Books store');
+const contentMain = createNewElement('main', 'div', {class: 'content-wrapper flex'});
+const sectionFirst = createNewElement('.content-wrapper.flex', 'section', {class: 'section'});
+const list = createNewElement('.section', 'ul', {class:'list'});
+const sectionBag = createNewElement('.content-wrapper.flex','section', {class:'section-bag'});
+const bagWrapper = createNewElement('.section-bag', 'div', {class:'bag-wrapper column'});
+const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'}, 'Your shopping bag');
+const bagTotalContainer = createNewElement('.bag-wrapper', 'div', {class: 'total-container'});
+const totalText = createNewElement('.total-container', 'span', {class: 'total-text'}, 'Bag Total: $');
+const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
 
 async function getData() {
   await fetch('../../data.json')
@@ -63,23 +74,3 @@ async function getData() {
 }
 
 getData();
-
-const sectionBag = document.createElement('section');
-const bagWrapper = document.createElement('div');
-bagWrapper.classList.add('bag-wrapper', 'column');
-sectionBag.prepend(bagWrapper);
-const sectionTitle = document.createElement('h2');
-sectionTitle.textContent='Your shopping bag';
-const bagTotalContainer = document.createElement('div');
-bagTotalContainer.classList.add('total-container');
-bagTotalContainer.insertAdjacentHTML('beforeend',`
-<span class="total-text">Bag Total: $</span>
-<span class="total-cost"> 0 </span>`)
-bagWrapper.prepend(sectionTitle);
-bagWrapper.appendChild(bagTotalContainer);
-sectionWrapper.append(sectionBag);
-
-
-fragment.append(main);
-body.appendChild(fragment)
-
