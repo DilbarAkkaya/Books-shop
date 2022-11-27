@@ -69,7 +69,6 @@ const bagWrapper = document.createElement('div');
 bagWrapper.classList.add('bag-wrapper', 'column');
 sectionBag.prepend(bagWrapper);
 const sectionTitle = document.createElement('h2');
-sectionTitle.style.color='var(--aqwa)';
 sectionTitle.textContent='Your shopping bag';
 const bagTotalContainer = document.createElement('div');
 bagTotalContainer.classList.add('total-container');

@@ -37,6 +37,9 @@ a {
 li {
   list-style: none;
 }
+h2 {
+  color: var(--aqwa);
+}
 
 .list {
   display: grid;
@@ -66,7 +69,6 @@ li {
   margin-right: 15px;
 }
 .main {
-  padding: 20px 0 20px 0;
   display: flex;
   flex-direction: row;
 }
@@ -78,7 +80,9 @@ li {
   display: flex;
   flex-direction: column;
 }
-
+section {
+  padding: 10px;
+}
 .card{
   display: flex;
   align-items: center;
@@ -145,7 +149,6 @@ li {
   backdrop-filter: blur(6px);
   border: 1px solid #24C5DB;
   border-radius: 20px;
-  margin-top: 5px;
 }
 
 input {
@@ -175,7 +178,15 @@ label {
 fieldset label {
   padding: 20px 0 0 20px;
 }
-
+form {
+  display: flex;
+  justify-content: space-between;
+  background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
+  backdrop-filter: blur(6px);
+  border: 1px solid #24C5DB;
+  border-radius: 20px;
+  padding: 10px 30px 10px 30px;
+}
 form span {
   color: var(--red);
 }
