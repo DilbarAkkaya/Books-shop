@@ -45,5 +45,9 @@ const sectionFirst = createNewElement('.content-wrapper>.flex', 'section') */;
 const sectionBag = createNewElement('.content-wrapper.flex','section', {class:'section-bag'});
 const bagWrapper = createNewElement('.section-bag', 'div', {class:'bag-wrapper column'});
 const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'}, 'Your shopping bag');
+const bagTotalContainer = createNewElement('.bag-wrapper', 'div', {class: 'total-container'});
+const totalText = createNewElement('.total-container', 'span', {class: 'total-text'}, 'Bag Total: $');
+const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
+
 
 
