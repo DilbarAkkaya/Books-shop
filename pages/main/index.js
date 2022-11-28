@@ -28,10 +28,16 @@ header.className = 'header';
 const main = document.createElement('main');
 main.classList.add('main');
 
+const footer = document.createElement('footer');
+footer.classList.add('header');
+
 fragment.prepend(header);
 body.prepend(fragment);
 
 fragment.append(main);
+body.append(fragment);
+
+fragment.append(footer);
 body.append(fragment);
 
 const contentWrapper = createNewElement('header', 'div', {class:'content-wrapper'});
@@ -49,6 +55,11 @@ const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'},
 const bagTotalContainer = createNewElement('.bag-wrapper', 'div', {class: 'total-container'});
 const totalText = createNewElement('.total-container', 'span', {class: 'total-text'}, 'Bag Total: $');
 const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
+const contentWrapperFooter = createNewElement('footer', 'div', {class: 'content-wrapper'});
+const footerWrapper = createNewElement('footer>div.content-wrapper', 'div', {class: 'header-wrapper'});
+const logoWrapperFooter = createNewElement('footer>.content-wrapper>.header-wrapper', 'div', {class:'logo-wrapper'});
+const linkLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper', 'a', {href: "#", class:'link-logo'});
+const imgLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper>.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
 
 async function getData() {
   await fetch('../../data.json')

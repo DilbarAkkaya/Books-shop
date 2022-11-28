@@ -62,7 +62,7 @@ h2 {
 .header-wrapper {
   display: flex;
   align-items: center;
-  padding: 14px 0;
+  padding: 5px 0;
   color: var(--aqwa);
 }
 .logo-wrapper {
