@@ -53,7 +53,7 @@
   const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
   const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
-  const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
+  //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
   const bookList = createNewElement('.bag-wrapper', 'ul', {class: 'card-list'});
   //const bookContainerImg = createNewElement('.bag-wrapper>.card', 'img', { src: '', alt: 'img' } )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
@@ -117,11 +117,12 @@
       if(e.target.closest('.add-bag')) {
         
         console.log(card.children)
-        bookList.insertAdjacentHTML('beforeend', `<li class="card column">
+        bookList.insertAdjacentHTML('beforeend', `<li class="card row">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
         <p class="author">${author.textContent}</p>
         <p class="title">${title.textContent}</p>
+        <p class="price" data-cost=${price.textContent}>${price.textContent}</p>
 </div>
 
       </li>`

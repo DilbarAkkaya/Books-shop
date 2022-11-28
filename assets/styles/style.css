@@ -39,6 +39,7 @@ li {
 }
 h2 {
   color: var(--aqwa);
+  text-align: center;
 }
 
 .list {
@@ -128,7 +129,7 @@ section {
 
 
 .bag-wrapper {
-  padding: 20px;
+  padding: 7px;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
   backdrop-filter: blur(6px);
   border: 1px solid #24C5DB;
@@ -254,4 +255,37 @@ input[type="text"], input[type="date"] {
 .modal-descr {
   margin: 10px 0 10px 20px;
   text-align:justify;
+}
+.row {
+  flex-direction: row;
+}
+.card-list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.card-list .card{
+    background: var(--white);
+    padding-bottom: 0;
+    border-radius: 3px;
+  }
+
+.card-list>.card>img {
+  width: 100px;
+  height: 120px;
+  transition: none;
+  padding: 5px;
+}
+.card-list>.card>img:hover {
+  transform: none;
+}
+
+.card-list .title, .card-list .author, .card-list .card-descr{
+ font-size: 14px;
+ text-align: start;
+ align-items: flex-start;
+}
+.card-list .card-descr{
+  padding: 5px;
 }
