@@ -125,14 +125,12 @@
         <p class="price" data-cost=${price.textContent}>${price.textContent}</p>
 </div>
 
-      </li>`
-        
-        )
-   /*      bookContainer.insertAdjacentHTML('beforeend',`<li class="card column">
-          <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
-
-        </li>`);
-        totalCost.textContent = price.dataset.cost; */
+      </li>`);
+if(totalCost.textContent) {
+  totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
+  console.log(totalCost.textContent)
+}
+       
       }
     })
   })();
