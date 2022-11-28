@@ -31,6 +31,9 @@ main.classList.add('main');
 const footer = document.createElement('footer');
 footer.classList.add('header');
 
+const modal = document.createElement('div');
+modal.classList.add('modal');
+
 fragment.prepend(header);
 body.prepend(fragment);
 
@@ -38,6 +41,9 @@ fragment.append(main);
 body.append(fragment);
 
 fragment.append(footer);
+body.append(fragment);
+
+fragment.append(modal);
 body.append(fragment);
 
 const contentWrapper = createNewElement('header', 'div', {class:'content-wrapper'});
@@ -60,6 +66,10 @@ const footerWrapper = createNewElement('footer>div.content-wrapper', 'div', {cla
 const logoWrapperFooter = createNewElement('footer>.content-wrapper>.header-wrapper', 'div', {class:'logo-wrapper'});
 const linkLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper', 'a', {href: "#", class:'link-logo'});
 const imgLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper>.link-logo', 'img', {src:'../../assets/icons/book.svg', alt: 'logo'});
+const modalDialog = createNewElement('.modal', 'div', {class: 'modal-dialog'});
+const modalContent = createNewElement('.modal-dialog', 'div', {class:'modal-content'});
+const modalDescription = createNewElement('.modal-content', 'p', {class: 'modal-descr'});
+const modalClose = createNewElement('.modal-content', 'button', {class: 'button'}, 'Close');
 
 async function getData() {
   await fetch('../../data.json')

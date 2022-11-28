@@ -226,3 +226,7 @@ input[type="text"], input[type="date"] {
   color: var(--aqwa);
   margin-left: 10px;
 }
+
+.hide {
+  display: none;
+}
