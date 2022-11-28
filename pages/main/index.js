@@ -32,7 +32,7 @@ const footer = document.createElement('footer');
 footer.classList.add('header');
 
 const modal = document.createElement('div');
-modal.classList.add('modal');
+modal.className = 'modal hide';
 
 fragment.prepend(header);
 body.prepend(fragment);
