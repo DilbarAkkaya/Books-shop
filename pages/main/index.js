@@ -100,16 +100,13 @@
       });
   
   list.addEventListener('click', (e)=>{
+    const card = e.target.closest('.card');
+    const modal = card.querySelector('.modal');
       if (e.target.closest('.show-more')) {
-        const card = e.target.closest('.card');
-        const modal = card.querySelector('.modal');
         modal.classList.toggle('hide');
       }
       if(e.target.closest('.close')){
-        const card = e.target.closest('.card');
-        const modal = card.querySelector('.modal');
-        modal.classList.add('hide')
-        console.log(modal)
+        modal.classList.add('hide');
       }
     })
   })();
