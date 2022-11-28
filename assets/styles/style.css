@@ -125,15 +125,7 @@ section {
   font-size: 20px;
   font-weight: 700;
 }
-.show-more {
-  display: block;
-  font-style: italic;
-  text-align: center;
-  padding-bottom: 10px;
-  color: var(--aqwa);
-  font-size: 18px;
-  font-weight: 500;
-}
+
 
 .bag-wrapper {
   padding: 20px;
@@ -212,6 +204,18 @@ input[type="text"], input[type="date"] {
   text-align: center;
   text-transform: uppercase;
   padding: 7px;
+}
+.show-more {
+  font-style: italic;
+  text-transform: none;
+  background-color: var(--transparent);
+  color: var(--aqwa);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  padding: 0;
+  margin-bottom: 7px;
 }
 .reset {
   background-color: var(--transparent);
