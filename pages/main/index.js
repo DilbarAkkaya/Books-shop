@@ -88,6 +88,7 @@
                 <div class="modal-content">
                   <p class="title">${book.title}</p>
                   <p class="modal-descr">${book.description}</p>
+                  <button class="button close">Close</button>
                   </div>
                 </div>
               </div>
@@ -103,6 +104,12 @@
         const card = e.target.closest('.card');
         const modal = card.querySelector('.modal');
         modal.classList.toggle('hide');
+      }
+      if(e.target.closest('.close')){
+        const card = e.target.closest('.card');
+        const modal = card.querySelector('.modal');
+        modal.classList.add('hide')
+        console.log(modal)
       }
     })
   })();
