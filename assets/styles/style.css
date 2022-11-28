@@ -251,3 +251,7 @@ input[type="text"], input[type="date"] {
   max-height: 80vh;
   overflow-y: auto;
 }
+.modal-descr {
+  margin-top: 10px;
+  text-align:justify;
+}
