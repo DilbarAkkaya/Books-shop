@@ -89,7 +89,8 @@ async function getData() {
       <button class="button add-bag">Add to bag</button>
       </div>
     </div>
-      </li>`)
+      </li>`),
+      modalDescription.textContent=`${book.description}`
       });
   });
 }
