@@ -53,6 +53,9 @@
   const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
   const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
+  const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
+  const bookList = createNewElement('.bag-wrapper', 'ul', {class: 'card-list'});
+  //const bookContainerImg = createNewElement('.bag-wrapper>.card', 'img', { src: '', alt: 'img' } )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
@@ -79,7 +82,7 @@
           <div class="card-descr">
             <p class="author">${book.author}</p>
             <p class="title">${book.title}</p>
-            <p class="price">$${book.price}</p>
+            <p class="price" data-cost=${book.price}>$${book.price}</p>
             <div class="flex column">
               <button class="button show-more">Show more</button>
               <button class="button add-bag">Add to bag</button>
@@ -102,11 +105,33 @@
   list.addEventListener('click', (e)=>{
     const card = e.target.closest('.card');
     const modal = card.querySelector('.modal');
+    const price = card.querySelector('.price');
+    const author = card.querySelector('.author');
+    const title = card.querySelector('.title');
       if (e.target.closest('.show-more')) {
         modal.classList.toggle('hide');
       }
-      if(e.target.closest('.close')){
+      if(e.target.closest('.close')) {
         modal.classList.add('hide');
+      }
+      if(e.target.closest('.add-bag')) {
+        
+        console.log(card.children)
+        bookList.insertAdjacentHTML('beforeend', `<li class="card column">
+        <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
+        <div class="card-descr">
+        <p class="author">${author.textContent}</p>
+        <p class="title">${title.textContent}</p>
+</div>
+
+      </li>`
+        
+        )
+   /*      bookContainer.insertAdjacentHTML('beforeend',`<li class="card column">
+          <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
+
+        </li>`);
+        totalCost.textContent = price.dataset.cost; */
       }
     })
   })();
