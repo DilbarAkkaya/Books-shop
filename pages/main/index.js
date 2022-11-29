@@ -1,7 +1,7 @@
 (async () => {
   const body = document.body;
   const fragment = new DocumentFragment();
-  
+
   function createNewElement(parentSelector, el, attrs, text) {
     const parent = document.querySelector(parentSelector);
     const newElement = document.createElement(el);
@@ -22,25 +22,25 @@
     parent.append(newElement);
     return newElement;
   }
-  
+
   const header = document.createElement('header');
   header.className = 'header';
-  
+
   const main = document.createElement('main');
   main.classList.add('main');
-  
+
   const footer = document.createElement('footer');
   footer.classList.add('header');
-  
+
   fragment.prepend(header);
   body.prepend(fragment);
-  
+
   fragment.append(main);
   body.append(fragment);
-  
+
   fragment.append(footer);
   body.append(fragment);
-  
+
   const contentWrapper = createNewElement('header', 'div', { class: 'content-wrapper' });
   const headerWrapper = createNewElement('div.content-wrapper', 'div', { class: 'header-wrapper' });
   const logoWrapper = createNewElement('.header-wrapper', 'div', { class: 'logo-wrapper' });
@@ -54,28 +54,27 @@
   const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
-  const bookList = createNewElement('.bag-wrapper', 'ul', {class: 'card-list'});
- // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
+  const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
+  // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
-  const confirmOrder = createNewElement('.bag-wrapper', 'button', {class: 'button add-bag hide'});
+  const confirmOrder = createNewElement('.bag-wrapper', 'button', { class: 'button add-bag hide' });
   const contentWrapperFooter = createNewElement('footer', 'div', { class: 'content-wrapper' });
   const footerWrapper = createNewElement('footer>div.content-wrapper', 'div', { class: 'header-wrapper' });
   const logoWrapperFooter = createNewElement('footer>.content-wrapper>.header-wrapper', 'div', { class: 'logo-wrapper' });
   const linkLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper', 'a', { href: "#", class: 'link-logo' });
   const imgLogoFooter = createNewElement('footer>.content-wrapper>.header-wrapper>.logo-wrapper>.link-logo', 'img', { src: '../../assets/icons/book.svg', alt: 'logo' });
-  
-  
+
   async function getData() {
     const url = '../../data.json';
     const response = await fetch(url);
     const data = await response.json();
     return data;
   }
-  
+
   let data = await getData();
-  
+
   data.forEach((book, i) => {
     const li = `
         <li class="card column" data-id="${i}">
@@ -99,26 +98,24 @@
             </div>
           </div>
         </li>`
-        list.insertAdjacentHTML('beforeend', li
-        );
-      });
-  
-  list.addEventListener('click', (e)=>{
+    list.insertAdjacentHTML('beforeend', li
+    );
+  });
+  list.addEventListener('click', (e) => {
     const card = e.target.closest('.card');
     const modal = card.querySelector('.modal');
     const price = card.querySelector('.cost');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
-  
-      if (e.target.closest('.show-more')) {
-        modal.classList.toggle('hide');
-      }
-      if(e.target.closest('.close')) {
-        modal.classList.add('hide');
-      }
-      if(e.target.closest('.add-bag')) {
-        bookList.insertAdjacentHTML('beforeend', `<li class="card row">
-        
+
+    if (e.target.closest('.show-more')) {
+      modal.classList.toggle('hide');
+    }
+    if (e.target.closest('.close')) {
+      modal.classList.add('hide');
+    }
+    if (e.target.closest('.add-bag')) {
+      bookList.insertAdjacentHTML('beforeend', `<li class="card row">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
         <p class="author">${author.textContent}</p>
@@ -128,21 +125,19 @@
 </div>
 
       </li>`);
- 
-if(totalCost.textContent) {
-  totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
-}
-
+      if (totalCost.textContent) {
+        totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
       }
-    })
 
-    bookList.addEventListener('click', (e)=>{
-      const card = e.target.closest('.card');
-      if(e.target.closest('.close-icon')) {
-        card.classList.add('hide');
-        const price = card.querySelector('.cost');
-        totalCost.textContent = totalCost.textContent - price.textContent
-    
-       }
-    })
-  })();
+    }
+  })
+  bookList.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (e.target.closest('.close-icon')) {
+      card.classList.add('hide');
+      const price = card.querySelector('.cost');
+      totalCost.textContent = totalCost.textContent - price.textContent
+
+    }
+  })
+})();
