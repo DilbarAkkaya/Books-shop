@@ -55,7 +55,7 @@
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
   const bookList = createNewElement('.bag-wrapper', 'ul', {class: 'card-list'});
-  const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
+ // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
@@ -109,6 +109,7 @@
     const price = card.querySelector('.price');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
+  
       if (e.target.closest('.show-more')) {
         modal.classList.toggle('hide');
       }
@@ -116,20 +117,20 @@
         modal.classList.add('hide');
       }
       if(e.target.closest('.add-bag')) {
-        bookContainerImg.classList.remove('hide')
         bookList.insertAdjacentHTML('beforeend', `<li class="card row">
+        
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
         <p class="author">${author.textContent}</p>
+        <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
         <p class="title">${title.textContent}</p>
         <p class="price" data-cost=${price.textContent}>${price.textContent}</p>
 </div>
 
       </li>`);
-      
+ 
 if(totalCost.textContent) {
   totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
-  console.log(bookList.children)
 }
        
       }

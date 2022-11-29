@@ -296,7 +296,7 @@ input[type="text"], input[type="date"] {
   height: 20px;
   position: absolute;
   padding: 0;
-  top: 5px;
+  top: 0;
   right: 5px;
   z-index: 10;
   cursor: pointer;
