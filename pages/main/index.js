@@ -83,7 +83,7 @@
           <div class="card-descr">
             <p class="author">${book.author}</p>
             <p class="title">${book.title}</p>
-            <p class="price" data-cost=${book.price}>$${book.price}</p>
+            <p class="price">$<span class="cost"data-cost=${book.price}>${book.price}</span></p>
             <div class="flex column">
               <button class="button show-more">Show more</button>
               <button class="button add-bag">Add to bag</button>
@@ -106,7 +106,7 @@
   list.addEventListener('click', (e)=>{
     const card = e.target.closest('.card');
     const modal = card.querySelector('.modal');
-    const price = card.querySelector('.price');
+    const price = card.querySelector('.cost');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
   
@@ -124,7 +124,7 @@
         <p class="author">${author.textContent}</p>
         <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
         <p class="title">${title.textContent}</p>
-        <p class="price" data-cost=${price.textContent}>${price.textContent}</p>
+        <p class="price">$<span class="cost"data-cost=${price.textContent}>${price.textContent}</span></p>
 </div>
 
       </li>`);
@@ -132,7 +132,17 @@
 if(totalCost.textContent) {
   totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
 }
-       
+
       }
+    })
+
+    bookList.addEventListener('click', (e)=>{
+      const card = e.target.closest('.card');
+      if(e.target.closest('.close-icon')) {
+        card.classList.add('hide');
+        const price = card.querySelector('.cost');
+        totalCost.textContent = totalCost.textContent - price.textContent
+    
+       }
     })
   })();
