@@ -55,10 +55,11 @@
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
   const bookList = createNewElement('.bag-wrapper', 'ul', {class: 'card-list'});
-  //const bookContainerImg = createNewElement('.bag-wrapper>.card', 'img', { src: '', alt: 'img' } )
+  const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
+  const confirmOrder = createNewElement('.bag-wrapper', 'button', {class: 'button add-bag hide'});
   const contentWrapperFooter = createNewElement('footer', 'div', { class: 'content-wrapper' });
   const footerWrapper = createNewElement('footer>div.content-wrapper', 'div', { class: 'header-wrapper' });
   const logoWrapperFooter = createNewElement('footer>.content-wrapper>.header-wrapper', 'div', { class: 'logo-wrapper' });
@@ -115,8 +116,7 @@
         modal.classList.add('hide');
       }
       if(e.target.closest('.add-bag')) {
-        
-        console.log(card.children)
+        bookContainerImg.classList.remove('hide')
         bookList.insertAdjacentHTML('beforeend', `<li class="card row">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
@@ -126,9 +126,10 @@
 </div>
 
       </li>`);
+      
 if(totalCost.textContent) {
   totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
-  console.log(totalCost.textContent)
+  console.log(bookList.children)
 }
        
       }
