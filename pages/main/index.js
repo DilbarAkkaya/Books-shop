@@ -182,7 +182,7 @@
       `;
 
     bookList.insertAdjacentHTML('beforeend', book);
-
+    confirmOrder.classList.remove('hide');
     if (total.textContent) {
       total.textContent = +total.textContent + +priceText;
     }
