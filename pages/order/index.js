@@ -50,11 +50,24 @@ const totalText = createNewElement('.total-container', 'span', {class: 'total-te
 const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
 
 
+
+
+//Form validation
+const form = document.getElementById('form');
+const name = document.getElementById('name');
+const surname = document.getElementById('surname');
+const date = document.getElementById('date');
+const street = document.getElementById('street');
+const house =document.getElementById('house');
+const flat = document.getElementById('flat');
+const cash = document.getElementById('cash');
+const card = document.getElementById('card');
+
 const input = document.querySelector('input');
 input.addEventListener('blur', validateAfterBlur)
 
   function validateAfterBlur(event){
     if(event.target.hasAttribute('required')) {
-      event.target.nextElementSibling.classList.remove('hide')
+      event.target.nextElementSibling.classList.remove('hide');
     }
   }
