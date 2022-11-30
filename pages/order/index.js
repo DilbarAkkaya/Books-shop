@@ -50,4 +50,11 @@ const totalText = createNewElement('.total-container', 'span', {class: 'total-te
 const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
 
 
+const input = document.querySelector('input');
+input.addEventListener('blur', validateAfterBlur)
 
+  function validateAfterBlur(event){
+    if(event.target.hasAttribute('required')) {
+      event.target.nextElementSibling.classList.remove('hide')
+    }
+  }
