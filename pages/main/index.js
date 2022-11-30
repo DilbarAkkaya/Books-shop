@@ -137,7 +137,9 @@
       card.classList.add('hide');
       const price = card.querySelector('.cost');
       totalCost.textContent = totalCost.textContent - price.textContent
-
+    if (totalCost.textContent == 0) {
+      confirmOrder.classList.add('hide')
+    }
     }
   })
 
