@@ -51,7 +51,7 @@
   const sectionFirst = createNewElement('.content-wrapper.flex', 'section', { class: 'section' });
   const list = createNewElement('.section', 'ul', { class: 'list' });
   const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
-  const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column', ondrop: 'drop(event)', ondragover:'dragover(event)'});
+  const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column', ondrop: 'drop(event)', ondragover: 'dragover(event)' });
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
   const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
@@ -144,7 +144,7 @@
 })();
 
 const dragstart = event => {
-  let card = event.target.closest('.card');
+  const card = event.target.closest('.card');
   const url = card.children[0].currentSrc;
   const price = card.querySelector('.cost');
   const author = card.querySelector('.author');
@@ -156,33 +156,30 @@ const dragstart = event => {
 };
 
 const drop = event => {
-  const total = document.querySelector('.total-cost')
-  let card = event.target.closest('.card');
   event.preventDefault();
-  let authorText = event.dataTransfer.getData('author');
-  let titleText =event.dataTransfer.getData('title');
-  let urlForImage = event.dataTransfer.getData('urlForImage');
-  let priceText = event.dataTransfer.getData('price');
-  let bookList = document.querySelector('.card-list');
-
-   //let item = document.createElement('li');
-/*     destList.append(text);
-    destList.append(text1) */
-    //destList.appendChild(item);
-    bookList.insertAdjacentHTML('beforeend', `<li class="card row">
-        <img src=${urlForImage} alt="book image" class="card-img">
-        <div class="card-descr">
+  const total = document.querySelector('.total-cost');
+  const authorText = event.dataTransfer.getData('author');
+  const titleText = event.dataTransfer.getData('title');
+  const urlForImage = event.dataTransfer.getData('urlForImage');
+  const priceText = event.dataTransfer.getData('price');
+  const bookList = document.querySelector('.card-list');
+  const book = `
+    <li class="card row">
+      <img src=${urlForImage} alt="book image" class="card-img">
+      <div class="card-descr">
         <p class="author">${authorText}</p>
         <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
         <p class="title">${titleText}</p>
         <p class="price">$<span class="cost"data-cost=${priceText}>${priceText}</span></p>
-</div>
+      </div>
+    </li>
+    `;
 
-      </li>`);
-      if (total.textContent) {
-        total.textContent = +total.textContent + +priceText;
-      }
+  bookList.insertAdjacentHTML('beforeend', book);
   
+  if (total.textContent) {
+    total.textContent = +total.textContent + +priceText;
+  }
 };
 
 const dragover = event => {
