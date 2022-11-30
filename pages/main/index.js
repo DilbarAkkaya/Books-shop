@@ -146,9 +146,11 @@
   list.addEventListener('dragstart', dragstart)
   bagWrapper.addEventListener('drop', drop);
   bagWrapper.addEventListener('dragover', dragover)
-  confirmOrder.addEventListener('click', ()=>{
+  confirmOrder.addEventListener('click', windowOpen)
+
+  function windowOpen(){
     window.open('../order/index.html');
-  })
+  }
 
   function dragstart(event) {
     const card = event.target.closest('.card');
