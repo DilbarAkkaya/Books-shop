@@ -152,6 +152,7 @@ const dragstart = event => {
   event.dataTransfer.setData("author", author.textContent);
   event.dataTransfer.setData("title", title.textContent);
   event.dataTransfer.setData("urlForImage", url);
+  event.dataTransfer.setData('price', price.textContent);
 
 };
 
@@ -161,6 +162,7 @@ const drop = event => {
   let authorText = event.dataTransfer.getData('author');
   let titleText =event.dataTransfer.getData('title');
   let urlForImage = event.dataTransfer.getData('urlForImage');
+  let priceText = event.dataTransfer.getData('price');
   let bookList = document.querySelector('.card-list');
 
    //let item = document.createElement('li');
@@ -173,7 +175,7 @@ const drop = event => {
         <p class="author">${authorText}</p>
         <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
         <p class="title">${titleText}</p>
-        
+        <p class="price">$<span class="cost"data-cost=${priceText}>${priceText}</span></p>
 </div>
 
       </li>`);
