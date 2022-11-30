@@ -59,7 +59,7 @@
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
-  const confirmOrder = createNewElement('.bag-wrapper', 'button', { class: 'button add-bag hide' });
+  const confirmOrder = createNewElement('.bag-wrapper', 'button', { class: 'button add-bag hide' }, 'Confirm order');
   const contentWrapperFooter = createNewElement('footer', 'div', { class: 'content-wrapper' });
   const footerWrapper = createNewElement('footer>div.content-wrapper', 'div', { class: 'header-wrapper' });
   const logoWrapperFooter = createNewElement('footer>.content-wrapper>.header-wrapper', 'div', { class: 'logo-wrapper' });
@@ -128,7 +128,7 @@
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
       }
-
+      confirmOrder.classList.remove('hide');
     }
   })
   bookList.addEventListener('click', (e) => {

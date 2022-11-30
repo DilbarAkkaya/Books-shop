@@ -90,7 +90,7 @@ section {
   justify-content: space-between;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
   backdrop-filter: blur(6px);
-  border: 1px solid #24C5DB;
+  border: 1px solid var(--aqwa);
   border-radius: 20px;
   padding-bottom: 10px;
   cursor: move;
@@ -130,11 +130,12 @@ section {
 
 
 .bag-wrapper {
-  padding: 7px;
+  padding: 15px 7px;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
   backdrop-filter: blur(6px);
-  border: 1px solid #24C5DB;
+  border: 1px solid var(--aqwa);
   border-radius: 20px;
+  align-items: center;
 }
 
 input {
@@ -179,7 +180,7 @@ form span {
 .total-container {
   color: var(--black);
   font-size: 20px;
-  margin-top: 30px;
+  margin: 15px 0;
 }
 
 input[type="text"]::placeholder {
