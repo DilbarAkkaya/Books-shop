@@ -204,9 +204,7 @@ input[type="text"]:focus, input[type="date"]:focus {
 input:valid{
   border: 1px solid var(--aqwa);
 }
-input:invalid {
-  border: 1px solid var(--red);
-}
+
 .submit-wrapper {
   justify-content: space-between;
   margin-top: 20px;

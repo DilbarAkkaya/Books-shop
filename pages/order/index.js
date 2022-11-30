@@ -54,7 +54,7 @@ const totalCost = createNewElement('.total-container', 'span', {class: 'total-co
 
 //Form validation
 const form = document.getElementById('form');
-const name = document.getElementById('name');
+const firstName = document.getElementById('name');
 const surname = document.getElementById('surname');
 const date = document.getElementById('date');
 const street = document.getElementById('street');
@@ -62,12 +62,22 @@ const house =document.getElementById('house');
 const flat = document.getElementById('flat');
 const cash = document.getElementById('cash');
 const card = document.getElementById('card');
+const submit =document.querySelector('.submit');
 
-const input = document.querySelector('input');
-input.addEventListener('blur', validateAfterBlur)
+const inputsAll = document.querySelectorAll('input');
+inputsAll.forEach(item => {
+  if(item.type != 'submit') {
+ item.addEventListener('blur', validateAfterBlur)
+  }
+})
 
   function validateAfterBlur(event){
     if(event.target.hasAttribute('required')) {
       event.target.nextElementSibling.classList.remove('hide');
+      event.target.style.border = "1px solid var(--red)"
     }
+
   }
+
+
+
