@@ -153,10 +153,10 @@ const dragstart = event => {
   event.dataTransfer.setData("title", title.textContent);
   event.dataTransfer.setData("urlForImage", url);
   event.dataTransfer.setData('price', price.textContent);
-
 };
 
 const drop = event => {
+  const total = document.querySelector('.total-cost')
   let card = event.target.closest('.card');
   event.preventDefault();
   let authorText = event.dataTransfer.getData('author');
@@ -179,6 +179,9 @@ const drop = event => {
 </div>
 
       </li>`);
+      if (total.textContent) {
+        total.textContent = +total.textContent + +priceText;
+      }
   
 };
 
