@@ -51,10 +51,10 @@
   const sectionFirst = createNewElement('.content-wrapper.flex', 'section', { class: 'section' });
   const list = createNewElement('.section', 'ul', { class: 'list' });
   const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
-  const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
+  const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column', ondrop: 'drop(event)', ondragover:'dragover(event)'});
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
-  const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
+  const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list dest-list' });
   // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
@@ -77,7 +77,7 @@
 
   data.forEach((book, i) => {
     const li = `
-        <li class="card column" data-id="${i}">
+        <li class="card column" data-id="${i}" draggable="true" ondragstart="dragstart(event)">
           <img src=${book.imageLink} alt="book image" class="card-img">
           <div class="card-descr">
             <p class="author">${book.author}</p>
@@ -140,4 +140,40 @@
 
     }
   })
+
 })();
+
+
+const dragstart = event => {
+  let card = event.target.closest('.card');
+  const author = card.querySelector('.author');
+  event.dataTransfer.setData("text", author.textContent);
+
+
+};
+
+const drop = event => {
+  event.preventDefault();
+  let text = event.dataTransfer.getData('text');
+  let bookList = document.querySelector('.card-list');
+
+   //let item = document.createElement('li');
+/*     destList.append(text);
+    destList.append(text1) */
+    //destList.appendChild(item);
+    bookList.insertAdjacentHTML('beforeend', `<li class="card row">
+
+        <div class="card-descr">
+        <p class="author">${text}</p>
+        <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
+
+        
+</div>
+
+      </li>`);
+  
+};
+
+const dragover = event => {
+  event.preventDefault();
+};
