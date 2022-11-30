@@ -54,7 +54,7 @@
   const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column', ondrop: 'drop(event)', ondragover:'dragover(event)'});
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
   //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
-  const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list dest-list' });
+  const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
   // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
@@ -143,18 +143,24 @@
 
 })();
 
-
 const dragstart = event => {
   let card = event.target.closest('.card');
+  const url = card.children[0].currentSrc;
+  const price = card.querySelector('.cost');
   const author = card.querySelector('.author');
-  event.dataTransfer.setData("text", author.textContent);
-
+  const title = card.querySelector('.title');
+  event.dataTransfer.setData("author", author.textContent);
+  event.dataTransfer.setData("title", title.textContent);
+  event.dataTransfer.setData("urlForImage", url);
 
 };
 
 const drop = event => {
+  let card = event.target.closest('.card');
   event.preventDefault();
-  let text = event.dataTransfer.getData('text');
+  let authorText = event.dataTransfer.getData('author');
+  let titleText =event.dataTransfer.getData('title');
+  let urlForImage = event.dataTransfer.getData('urlForImage');
   let bookList = document.querySelector('.card-list');
 
    //let item = document.createElement('li');
@@ -162,11 +168,11 @@ const drop = event => {
     destList.append(text1) */
     //destList.appendChild(item);
     bookList.insertAdjacentHTML('beforeend', `<li class="card row">
-
+        <img src=${urlForImage} alt="book image" class="card-img">
         <div class="card-descr">
-        <p class="author">${text}</p>
+        <p class="author">${authorText}</p>
         <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
-
+        <p class="title">${titleText}</p>
         
 </div>
 
