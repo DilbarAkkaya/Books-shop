@@ -76,6 +76,9 @@ inputsAll.forEach(item => {
     const firstNameValue = firstName.value.trim();
     const surnameValue = surname.value.trim();
     const streetValue = street.value.trim();
+    const houseValue = house.value.trim();
+    const flatValue = flat.value.trim();
+
     if(event.target.hasAttribute('required') && event.target === firstName) {
       if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
         firstName.nextElementSibling.classList.remove('hide')
@@ -103,7 +106,52 @@ inputsAll.forEach(item => {
           street.style.border = '1px solid var(--aqwa)';
         }
       }
+      if(event.target.hasAttribute('required') && event.target === house) {
+        if((houseValue === '') || (houseValue < 0) || (!(/^[0-9\s]+$/).test(houseValue))){
+          house.nextElementSibling.classList.remove('hide')
+          house.style.border = '1px solid var(--red)'
+        } else {
+          house.nextElementSibling.classList.add('hide');
+          house.style.border = '1px solid var(--aqwa)';
+        }
   }
+  if(event.target.hasAttribute('required') && event.target === flat) {
+ 
+    if((flatValue === '') || (flatValue < 0) || (!(/^[1-9][0-9-]*$/).test(flatValue))){
+      flat.nextElementSibling.classList.remove('hide')
+      flat.style.border = '1px solid var(--red)'
+    } else {
+      flat.nextElementSibling.classList.add('hide');
+      flat.style.border = '1px solid var(--aqwa)';
+    }
+}
+if(event.target.hasAttribute('required') && event.target === date) {
+  let dateValue = date.value;
+  let today = new Date();
+  let todayYear = today.getFullYear();
+  let todayMonth = today.getMonth()+1;
+  let todayDate = today.getDate();
+  let tomorrow = todayDate +1;
+  if ((tomorrow) < 10) {
+    tomorrow = "0" + tomorrow;
+    console.log(tomorrow)
+  }
+ // dateValue = today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate()
+  dateValue = todayYear + "-" + todayMonth + "-" + (tomorrow);
+  console.log(dateValue);
+  console.log(date.value)
+ // date.setAttribute("min", `${dateValue}`)
+if(date.value < dateValue) {
+console.log('ok')
+date.nextElementSibling.classList.remove('hide')
+date.style.border = '1px solid var(--red)'
+} else {
+date.nextElementSibling.classList.add('hide');
+date.style.border = '1px solid var(--aqwa)';
+}
+}
+
+}
 /*      if(!(firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
       console.log('aa')
       firstName.nextElementSibling.classList.add('hide');
