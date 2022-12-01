@@ -93,4 +93,12 @@ inputsAll.forEach(item => {
       surname.nextElementSibling.classList.add('hide');
       surname.style.border = '1px solid var(--aqwa)';
     }
+    const streetValue = street.value.trim();
+    if((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue))){
+      street.nextElementSibling.classList.remove('hide')
+      street.style.border = '1px solid var(--red)'
+    } else {
+      street.nextElementSibling.classList.add('hide');
+      street.style.border = '1px solid var(--aqwa)';
+    }
   }
