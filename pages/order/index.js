@@ -101,4 +101,12 @@ inputsAll.forEach(item => {
       street.nextElementSibling.classList.add('hide');
       street.style.border = '1px solid var(--aqwa)';
     }
+    const houseValue = house.value.trim();
+    if((houseValue === '') || (houseValue < 0) || (!(/^[0-9\s]+$/).test(houseValue))){
+      house.nextElementSibling.classList.remove('hide')
+      house.style.border = '1px solid var(--red)'
+    } else {
+      house.nextElementSibling.classList.add('hide');
+      house.style.border = '1px solid var(--aqwa)';
+    }
   }
