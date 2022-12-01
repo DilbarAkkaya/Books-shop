@@ -109,4 +109,14 @@ inputsAll.forEach(item => {
       house.nextElementSibling.classList.add('hide');
       house.style.border = '1px solid var(--aqwa)';
     }
+    const flatValue = flat.value.trim();
+    if((flatValue === '') || (flatValue < 0) || (!(/^[1-9][0-9-]*$/).test(flatValue))){
+      flat.nextElementSibling.classList.remove('hide')
+      flat.style.border = '1px solid var(--red)'
+    } else {
+      flat.nextElementSibling.classList.add('hide');
+      flat.style.border = '1px solid var(--aqwa)';
+    }
+
+
   }
