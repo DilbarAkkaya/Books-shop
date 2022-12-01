@@ -117,6 +117,27 @@ inputsAll.forEach(item => {
       flat.nextElementSibling.classList.add('hide');
       flat.style.border = '1px solid var(--aqwa)';
     }
-
-
-  }
+    let dateValue = date.value;
+    let today = new Date();
+    let todayYear = today.getFullYear();
+    let todayMonth = today.getMonth()+1;
+    let todayDate = today.getDate();
+    let tomorrow = todayDate +1;
+    if ((tomorrow) < 10) {
+      tomorrow = "0" + tomorrow;
+      console.log(tomorrow)
+    }
+   // dateValue = today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate()
+    dateValue = todayYear + "-" + todayMonth + "-" + (tomorrow);
+    console.log(dateValue);
+    console.log(date.value)
+   // date.setAttribute("min", `${dateValue}`)
+if(date.value < dateValue) {
+  console.log('ok')
+  date.nextElementSibling.classList.remove('hide')
+  date.style.border = '1px solid var(--red)'
+} else {
+  date.nextElementSibling.classList.add('hide');
+  date.style.border = '1px solid var(--aqwa)';
+}
+}
