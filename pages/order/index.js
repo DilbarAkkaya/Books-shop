@@ -53,10 +53,6 @@ const modal = createNewElement('.main', 'div', {class: 'modal hide'});
 const modalDialog = createNewElement('.modal','div',{class: 'modal-dialog'});
 const modalContent = createNewElement('.modal-dialog','div', {class: 'modal-content'});
 const modalTitle = createNewElement('.modal-content', 'p', {class: 'title'}, 'The order created');
-const modalName = createNewElement('.modal-content', 'p', {class:'modal-descr'}, 'Name: ');
-const modalSurname = createNewElement('.modal-content', 'p', {class: 'modal-descr'}, 'Surname: ');
-const modalAdress = createNewElement('.modal-content', 'p', {class: 'modal-descr'}, 'Adress: ');
-const modalDate = createNewElement('.modal-content', 'p', {class: 'modal-descr'}, 'Delivery date: ');
 const closeButton = createNewElement('.modal-content', 'button', {class: 'button close'}, 'Close');
 
 
@@ -166,8 +162,11 @@ function showOrderInfo(event){
   event.preventDefault();
  modal.classList.remove('hide');
   console.log(modal)
-  modalName.insertAdjacentHTML('beforeend', `
-  <span>${firstName.value}</span>`)
+  modalTitle.insertAdjacentHTML('beforeend', `
+  <p class="modal-descr">Name: ${firstName.value}</p>
+  <p class="modal-descr">Surname: ${surname.value}</p>
+  <p class="modal-descr">Delivery adress: ${street.value} street house ${house.value} flat ${flat.value}</p>
+  <p class="modal-descr">Delivery date: ${firstName.value}</p>`)
 }
 
 submit.addEventListener('click', showOrderInfo);
