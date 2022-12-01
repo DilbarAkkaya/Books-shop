@@ -67,7 +67,8 @@ const submit =document.querySelector('.submit');
 const inputsAll = document.querySelectorAll('input');
 inputsAll.forEach(item => {
   if(item.type != 'submit') {
- item.addEventListener('blur', validateAfterBlur)
+ item.addEventListener('blur', validateAfterBlur);
+ item.addEventListener('input', checkInputs)
   }
 })
 
@@ -75,9 +76,18 @@ inputsAll.forEach(item => {
     if(event.target.hasAttribute('required')) {
       event.target.nextElementSibling.classList.remove('hide');
       event.target.style.border = "1px solid var(--red)"
-    }
-
+    } 
   }
 
+  function checkInputs() {
+    const firstNameValue = firstName.value.trim();
+    if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))){
+      firstName.nextElementSibling.classList.remove('hide')
+      firstName.style.border = '1px solid var(--red)'
+    } else {
+      firstName.nextElementSibling.classList.add('hide');
+      firstName.style.border = '1px solid var(--aqwa)'
+    }
+  }
 
 

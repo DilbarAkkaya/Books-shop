@@ -222,6 +222,9 @@ input:valid{
   text-transform: uppercase;
   padding: 7px;
 }
+.submit:disabled  {
+  opacity: 0.4;
+}
 .show-more {
   font-style: italic;
   text-transform: none;
