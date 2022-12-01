@@ -67,19 +67,16 @@ const submit =document.querySelector('.submit');
 const inputsAll = document.querySelectorAll('input');
 inputsAll.forEach(item => {
   if(item.type != 'submit') {
- item.addEventListener('blur', validateAfterBlur);
+ item.addEventListener('blur', checkInputs);
  item.addEventListener('input', checkInputs)
   }
 })
 
-  function validateAfterBlur(event){
+  function checkInputs(event) {
     if(event.target.hasAttribute('required')) {
       event.target.nextElementSibling.classList.remove('hide');
       event.target.style.border = "1px solid var(--red)"
     } 
-  }
-
-  function checkInputs() {
     const firstNameValue = firstName.value.trim();
     if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))){
       firstName.nextElementSibling.classList.remove('hide')
