@@ -75,6 +75,7 @@ inputsAll.forEach(item => {
   function checkInputs(event) {
     const firstNameValue = firstName.value.trim();
     const surnameValue = surname.value.trim();
+    const streetValue = street.value.trim();
     if(event.target.hasAttribute('required') && event.target === firstName) {
       if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
         firstName.nextElementSibling.classList.remove('hide')
@@ -91,6 +92,15 @@ inputsAll.forEach(item => {
         } else {
           surname.nextElementSibling.classList.add('hide');
           surname.style.border = '1px solid var(--aqwa)';
+        }
+      }
+      if(event.target.hasAttribute('required') && event.target === street) {
+        if((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue))){
+          street.nextElementSibling.classList.remove('hide')
+          street.style.border = '1px solid var(--red)'
+        } else {
+          street.nextElementSibling.classList.add('hide');
+          street.style.border = '1px solid var(--aqwa)';
         }
       }
   }
