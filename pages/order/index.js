@@ -85,4 +85,12 @@ inputsAll.forEach(item => {
       firstName.nextElementSibling.classList.add('hide');
       firstName.style.border = '1px solid var(--aqwa)';
     }
+    const surnameValue = surname.value.trim();
+    if((surnameValue === '') || (surnameValue.length < 5) || (!(/^[a-zA-Z]+$/i).test(surnameValue))){
+      surname.nextElementSibling.classList.remove('hide')
+      surname.style.border = '1px solid var(--red)'
+    } else {
+      surname.nextElementSibling.classList.add('hide');
+      surname.style.border = '1px solid var(--aqwa)';
+    }
   }
