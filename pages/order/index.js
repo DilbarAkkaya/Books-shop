@@ -73,19 +73,28 @@ inputsAll.forEach(item => {
 })
 
   function checkInputs(event) {
-    if(event.target.hasAttribute('required')) {
-      event.target.nextElementSibling.classList.remove('hide');
-      event.target.style.border = "1px solid var(--red)"
-    } 
     const firstNameValue = firstName.value.trim();
-    if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))){
-      firstName.nextElementSibling.classList.remove('hide')
-      firstName.style.border = '1px solid var(--red)'
-    } else {
+    if(event.target.hasAttribute('required') && event.target === firstName) {
+      if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
+        firstName.nextElementSibling.classList.remove('hide')
+        firstName.style.border = '1px solid var(--red)'
+
+       } else {
+        firstName.nextElementSibling.classList.add('hide');
+        firstName.style.border = '1px solid var(--aqwa)';
+       }
+      }
+  }
+/*      if(!(firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
+      console.log('aa')
       firstName.nextElementSibling.classList.add('hide');
       firstName.style.border = '1px solid var(--aqwa)';
-    }
-    const surnameValue = surname.value.trim();
+     } else {
+      firstName.nextElementSibling.classList.remove('hide')
+      firstName.style.border = '1px solid var(--red)'
+     }
+    } */
+    /* const surnameValue = surname.value.trim();
     if((surnameValue === '') || (surnameValue.length < 5) || (!(/^[a-zA-Z]+$/i).test(surnameValue))){
       surname.nextElementSibling.classList.remove('hide')
       surname.style.border = '1px solid var(--red)'
@@ -139,5 +148,4 @@ if(date.value < dateValue) {
 } else {
   date.nextElementSibling.classList.add('hide');
   date.style.border = '1px solid var(--aqwa)';
-}
-}
+} */
