@@ -83,8 +83,6 @@ inputsAll.forEach(item => {
       firstName.style.border = '1px solid var(--red)'
     } else {
       firstName.nextElementSibling.classList.add('hide');
-      firstName.style.border = '1px solid var(--aqwa)'
+      firstName.style.border = '1px solid var(--aqwa)';
     }
   }
-
-
