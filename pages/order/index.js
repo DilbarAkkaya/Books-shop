@@ -134,15 +134,9 @@ if(event.target.hasAttribute('required') && event.target === date) {
   let tomorrow = todayDate +1;
   if ((tomorrow) < 10) {
     tomorrow = "0" + tomorrow;
-    console.log(tomorrow)
   }
- // dateValue = today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate()
   dateValue = todayYear + "-" + todayMonth + "-" + (tomorrow);
-  console.log(dateValue);
-  console.log(date.value)
- // date.setAttribute("min", `${dateValue}`)
 if(date.value < dateValue) {
-console.log('ok')
 date.nextElementSibling.classList.remove('hide')
 date.style.border = '1px solid var(--red)'
 } else {
@@ -152,67 +146,3 @@ date.style.border = '1px solid var(--aqwa)';
 }
 
 }
-/*      if(!(firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
-      console.log('aa')
-      firstName.nextElementSibling.classList.add('hide');
-      firstName.style.border = '1px solid var(--aqwa)';
-     } else {
-      firstName.nextElementSibling.classList.remove('hide')
-      firstName.style.border = '1px solid var(--red)'
-     }
-    } */
-    /* const surnameValue = surname.value.trim();
-    if((surnameValue === '') || (surnameValue.length < 5) || (!(/^[a-zA-Z]+$/i).test(surnameValue))){
-      surname.nextElementSibling.classList.remove('hide')
-      surname.style.border = '1px solid var(--red)'
-    } else {
-      surname.nextElementSibling.classList.add('hide');
-      surname.style.border = '1px solid var(--aqwa)';
-    }
-    const streetValue = street.value.trim();
-    if((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue))){
-      street.nextElementSibling.classList.remove('hide')
-      street.style.border = '1px solid var(--red)'
-    } else {
-      street.nextElementSibling.classList.add('hide');
-      street.style.border = '1px solid var(--aqwa)';
-    }
-    const houseValue = house.value.trim();
-    if((houseValue === '') || (houseValue < 0) || (!(/^[0-9\s]+$/).test(houseValue))){
-      house.nextElementSibling.classList.remove('hide')
-      house.style.border = '1px solid var(--red)'
-    } else {
-      house.nextElementSibling.classList.add('hide');
-      house.style.border = '1px solid var(--aqwa)';
-    }
-    const flatValue = flat.value.trim();
-    if((flatValue === '') || (flatValue < 0) || (!(/^[1-9][0-9-]*$/).test(flatValue))){
-      flat.nextElementSibling.classList.remove('hide')
-      flat.style.border = '1px solid var(--red)'
-    } else {
-      flat.nextElementSibling.classList.add('hide');
-      flat.style.border = '1px solid var(--aqwa)';
-    }
-    let dateValue = date.value;
-    let today = new Date();
-    let todayYear = today.getFullYear();
-    let todayMonth = today.getMonth()+1;
-    let todayDate = today.getDate();
-    let tomorrow = todayDate +1;
-    if ((tomorrow) < 10) {
-      tomorrow = "0" + tomorrow;
-      console.log(tomorrow)
-    }
-   // dateValue = today.getFullYear() + "/" + today.getMonth() + "/" + today.getDate()
-    dateValue = todayYear + "-" + todayMonth + "-" + (tomorrow);
-    console.log(dateValue);
-    console.log(date.value)
-   // date.setAttribute("min", `${dateValue}`)
-if(date.value < dateValue) {
-  console.log('ok')
-  date.nextElementSibling.classList.remove('hide')
-  date.style.border = '1px solid var(--red)'
-} else {
-  date.nextElementSibling.classList.add('hide');
-  date.style.border = '1px solid var(--aqwa)';
-} */
