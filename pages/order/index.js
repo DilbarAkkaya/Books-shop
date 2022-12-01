@@ -52,7 +52,7 @@ const totalCost = createNewElement('.total-container', 'span', {class: 'total-co
 const modal = createNewElement('.main', 'div', {class: 'modal hide'});
 const modalDialog = createNewElement('.modal','div',{class: 'modal-dialog'});
 const modalContent = createNewElement('.modal-dialog','div', {class: 'modal-content'});
-const modalTitle = createNewElement('.modal-content', 'p', {class: 'title'}, 'The order created');
+const modalTitle = createNewElement('.modal-content', 'h3', {class: 'bag-title'}, 'The order created');
 const closeButton = createNewElement('.modal-content', 'button', {class: 'button close'}, 'Close');
 
 
@@ -166,7 +166,11 @@ function showOrderInfo(event){
   <p class="modal-descr">Name: ${firstName.value}</p>
   <p class="modal-descr">Surname: ${surname.value}</p>
   <p class="modal-descr">Delivery adress: ${street.value} street house ${house.value} flat ${flat.value}</p>
-  <p class="modal-descr">Delivery date: ${firstName.value}</p>`)
+  <p class="modal-descr">Delivery date: ${date.value}</p>`)
 }
 
 submit.addEventListener('click', showOrderInfo);
+closeButton.addEventListener('click', closeModal);
+function closeModal(){
+  modal.classList.add('hide');
+}
