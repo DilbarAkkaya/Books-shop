@@ -74,15 +74,24 @@ inputsAll.forEach(item => {
 
   function checkInputs(event) {
     const firstNameValue = firstName.value.trim();
+    const surnameValue = surname.value.trim();
     if(event.target.hasAttribute('required') && event.target === firstName) {
       if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
         firstName.nextElementSibling.classList.remove('hide')
         firstName.style.border = '1px solid var(--red)'
-
        } else {
         firstName.nextElementSibling.classList.add('hide');
         firstName.style.border = '1px solid var(--aqwa)';
        }
+      }
+      if(event.target.hasAttribute('required') && event.target === surname) {
+        if((surnameValue === '') || (surnameValue.length < 5) || (!(/^[a-zA-Z]+$/i).test(surnameValue))){
+          surname.nextElementSibling.classList.remove('hide')
+          surname.style.border = '1px solid var(--red)'
+        } else {
+          surname.nextElementSibling.classList.add('hide');
+          surname.style.border = '1px solid var(--aqwa)';
+        }
       }
   }
 /*      if(!(firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
