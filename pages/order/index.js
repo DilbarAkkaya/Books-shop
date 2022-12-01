@@ -18,7 +18,8 @@ function createNewElement(parentSelector, el, attrs, text) {
   if (text) {
     newElement.innerHTML = text;
   }
- return parent.append(newElement);
+ parent.append(newElement);
+ return newElement;
 }
 
 
@@ -48,7 +49,7 @@ const sectionTitle = createNewElement('.bag-wrapper', 'h2', {class:'bag-title'},
 const bagTotalContainer = createNewElement('.bag-wrapper', 'div', {class: 'total-container'});
 const totalText = createNewElement('.total-container', 'span', {class: 'total-text'}, 'Bag Total: $');
 const totalCost = createNewElement('.total-container', 'span', {class: 'total-cost'}, '0');
-const modal = createNewElement('body', 'div', {class: 'modal'});
+const modal = createNewElement('.main', 'div', {class: 'modal hide'});
 const modalDialog = createNewElement('.modal','div',{class: 'modal-dialog'});
 const modalContent = createNewElement('.modal-dialog','div', {class: 'modal-content'});
 const modalTitle = createNewElement('.modal-content', 'p', {class: 'title'}, 'The order created');
@@ -73,11 +74,7 @@ const flat = document.getElementById('flat');
 const cash = document.getElementById('cash');
 const card = document.getElementById('card');
 const submit =document.querySelector('.submit');
-const firstNameValue = firstName.value.trim();
-const surnameValue = surname.value.trim();
-const streetValue = street.value.trim();
-const houseValue = house.value.trim();
-const flatValue = flat.value.trim();
+
 
 const inputsAll = document.querySelectorAll('input');
 inputsAll.forEach(item => {
@@ -88,7 +85,11 @@ inputsAll.forEach(item => {
 })
 
   function checkInputs(event) {
-   
+    const firstNameValue = firstName.value.trim();
+    const surnameValue = surname.value.trim();
+    const streetValue = street.value.trim();
+    const houseValue = house.value.trim();
+    const flatValue = flat.value.trim();
 
     if(event.target.hasAttribute('required') && event.target === firstName) {
       if((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
@@ -160,7 +161,13 @@ date.style.border = '1px solid var(--aqwa)';
 form.addEventListener("change", () => {
   submit.disabled = !form.checkValidity()
 });
-
-function showOrderInfo(){
-  
+console.log(modal)
+function showOrderInfo(event){
+  event.preventDefault();
+ modal.classList.remove('hide');
+  console.log(modal)
+  modalName.insertAdjacentHTML('beforeend', `
+  <span>${firstName.value}</span>`)
 }
+
+submit.addEventListener('click', showOrderInfo);
