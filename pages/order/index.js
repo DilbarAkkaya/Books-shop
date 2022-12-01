@@ -70,6 +70,7 @@ const flat = document.getElementById('flat');
 const cash = document.getElementById('cash');
 const card = document.getElementById('card');
 const submit =document.querySelector('.submit');
+const reset = document.querySelector('.reset');
 
 
 const inputsAll = document.querySelectorAll('input');
@@ -173,4 +174,9 @@ submit.addEventListener('click', showOrderInfo);
 closeButton.addEventListener('click', closeModal);
 function closeModal(){
   modal.classList.add('hide');
+}
+reset.addEventListener('click', resetForm);
+function resetForm(){
+  form.reset();
+  submit.disabled = true;
 }
