@@ -83,16 +83,15 @@
     
     let liInBag = `
       <li class="card row">
+        <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
           <p class="author">${author.textContent}</p>
-          <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
           <p class="title">${title.textContent}</p>
           <p class="price">$<span class="cost"data-cost=${price.textContent}>${price.textContent}</span></p>
         </div>
       </li>
     `;
-   
 
     if (e.target.closest('.show-more')) {
       modal.classList.toggle('hide');

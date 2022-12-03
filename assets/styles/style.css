@@ -48,6 +48,19 @@ h2 {
   grid-row-gap: 10px;
   grid-column-gap: 10px;
 }
+.list>.card {
+  position: relative;
+}
+.list>.card>.close-icon{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  padding: 0;
+  top: 2px;
+  right: 2px;
+  z-index: 10;
+  cursor: pointer;
+}
 .content-wrapper {
   max-width: 1300px;
   margin: 0 auto;
@@ -128,9 +141,6 @@ section {
   font-weight: 700;
 }
 
-.section-bag{
-  width: 40%;
-}
 .bag-wrapper {
   padding: 15px 7px;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
