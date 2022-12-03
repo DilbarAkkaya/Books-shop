@@ -97,27 +97,28 @@ reset.addEventListener('click', resetForm);
 
 document.addEventListener('click', closeModalClickWindow);
 
-window.addEventListener('load', () => {
+window.addEventListener('load', getBooksFromLocaleStorage);
+
+bookList.addEventListener('click', deleteBook);
+
+function getBooksFromLocaleStorage(){
   const booksInBag = JSON.parse(localStorage.getItem('booksArray') || '[]');
   booksInBag.forEach(book => {
     bookList.insertAdjacentHTML('beforeend', `
-    <li class="card row">
-      <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
-      <img src=${book.imgProp} alt="book image" class="card-img">
-      <div class="card-descr">
-        <p class="author">${book.authorProp}</p>
-        <p class="title">${book.titleProp}</p>
-        <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
-      </div>
-    </li>
-  `);
-  });
-
-  totalCost.textContent = localStorage.getItem('total');
-  console.log(totalCost.textContent)
+      <li class="card row">
+        <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
+        <img src=${book.imgProp} alt="book image" class="card-img">
+        <div class="card-descr">
+          <p class="author">${book.authorProp}</p>
+          <p class="title">${book.titleProp}</p>
+          <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
+        </div>
+      </li>
+    `
+  );
 });
-
-bookList.addEventListener('click', deleteBook);
+  totalCost.textContent = localStorage.getItem('total');
+};
 
 function deleteBook(e) {
   const bookInBag = e.target.closest('.card');
