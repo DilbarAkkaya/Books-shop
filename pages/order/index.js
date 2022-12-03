@@ -235,6 +235,7 @@ function showOrderInfo(event) {
 
 function closeModal() {
   modal.classList.add('hide');
+  modalTitle.innerHTML = ''
 };
 
 function resetForm() {
