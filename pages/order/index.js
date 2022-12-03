@@ -85,9 +85,7 @@ date.addEventListener('blur', () => {
   checkDate();
 });
 
-form.addEventListener("change", (event) => {
-  submit.disabled = !form.checkValidity()
-});
+form.addEventListener("change", changeStateSubmit);
 
 submit.addEventListener('click', showOrderInfo);
 
@@ -255,6 +253,10 @@ function checkInputs() {
   } else {
     submit.disabled = true;
   }
+};
+
+function changeStateSubmit(){
+  submit.disabled = !form.checkValidity();
 };
 
 function showOrderInfo(event) {
