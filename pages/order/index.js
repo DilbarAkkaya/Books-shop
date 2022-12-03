@@ -158,7 +158,7 @@ function checkSurname(){
     isSurnameInputValid = true;
   }
   surname.setAttribute('isValid', isSurnameInputValid);
- // checkInputs();
+  checkInputs();
 };
 
 function checkStreet() {
@@ -174,7 +174,7 @@ function checkStreet() {
     console.log(street.getAttribute('isValid'))
   }
   surname.setAttribute('isValid', isStreetInputValid);
- // checkInputs();
+  checkInputs();
 }
 
 function checkHouse() {
@@ -190,7 +190,7 @@ function checkHouse() {
     console.log(house.getAttribute('isValid'))
   }
   house.setAttribute('isValid', isHouseInputValid);
-  //checkInputs();
+  checkInputs();
 }
 function checkFlat(){
   let flatValue = flat.value.trim();
@@ -204,7 +204,7 @@ function checkFlat(){
     isFlatValid = true;
   }
   flat.setAttribute('isValid', isFlatValid);
- // checkInputs();
+  checkInputs();
 }
 function checkDate() {
   let dateValue = date.value;
@@ -228,7 +228,7 @@ function checkDate() {
     console.log(date.getAttribute('isValid'))
   }
   date.setAttribute('isValid', isDateValid);
- // checkInputs();
+  checkInputs();
 }
 function checkName (){
   let firstNameValue = firstName.value.trim();
@@ -245,9 +245,17 @@ function checkName (){
       console.log(firstName.getAttribute('isValid'))
     }
     firstName.setAttribute('isValid', isFirstNameInputValid);
-   // checkInputs();
+    checkInputs();
 }
+function checkInputs() {
+  console.log(isFirstNameInputValid);
 
+  if (isFirstNameInputValid && isSurnameInputValid && isStreetInputValid && isHouseInputValid && isFlatValid && isDateValid && isFirstNameInputBlur && isSurnameInputBlur && isStreetInputBlur && isHouseInputBlur && isFlatBlur && isDateBlur) {
+    submit.disabled = false;
+  } else {
+    submit.disabled = true;
+  }
+}
 
 
 
@@ -358,16 +366,15 @@ function resetForm() {
   submit.disabled = true;
 };
 
-function checkIsValid() {
+/* function checkIsValid() {
  let arr = [firstName, surname, date, street, house, flat];
  arr.every(item=>{
   if(item.getAttribute('isValid') == true){
     console.log("it is valid ", item.getAttribute('isValid'))
   }
- })
+ }) */
 /*  arr.forEach(item=>{
   if(item.getAttribute('isValid') === true){
     console.log(9999)
   }
  }) */
-}
