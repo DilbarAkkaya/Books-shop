@@ -80,7 +80,8 @@
     const price = card.querySelector('.cost');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
-    const liInBag = `
+    
+    let liInBag = `
       <li class="card row">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
@@ -91,6 +92,7 @@
         </div>
       </li>
     `;
+   
 
     if (e.target.closest('.show-more')) {
       modal.classList.toggle('hide');
@@ -103,8 +105,19 @@
       localStorage.setItem('author', `${author.textContent}`);
       localStorage.setItem('price', `${price.textContent}`);
       localStorage.setItem('img', `${card.children[0].currentSrc}`);
-      console.log(localStorage.img)
+      let arrayOfBooks = [];
       bookList.insertAdjacentHTML('beforeend', liInBag);
+      const liAllInBag = bookList.querySelectorAll('.card');
+      for (liInBag of liAllInBag) {
+        const imageElement = liInBag.querySelector('.card-img');
+        const imageUrl = imageElement.currentSrc;
+        console.log(imageUrl)
+        const bookProps = {
+          imgProp: imageUrl,
+        }
+        arrayOfBooks.push(bookProps)
+        console.log(arrayOfBooks)
+      }
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
       }
