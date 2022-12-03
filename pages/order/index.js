@@ -67,22 +67,24 @@ const card = document.getElementById('card');
 const submit = document.querySelector('.submit');
 const reset = document.querySelector('.reset');
 const inputsAll = document.querySelectorAll('input');
-
+/* 
 inputsAll.forEach(item => {
   if (item.type != 'submit') {
     item.addEventListener('blur', checkInputs);
-    item.addEventListener('input', checkInputs)
-  }
-});
+    item.addEventListener('input', checkInputs);
 
-form.addEventListener("change", () => {
+  }
+}); */
+form.addEventListener("change", (event) => {
+  //checkIsValid()
+ // console.log(event.target.getAttribute('isValid'))
   submit.disabled = !form.checkValidity()
 });
 
 submit.addEventListener('click', showOrderInfo);
 closeButton.addEventListener('click', closeModal);
 reset.addEventListener('click', resetForm);
-
+/* 
 function checkInputs(event) {
   const firstNameValue = firstName.value.trim();
   const surnameValue = surname.value.trim();
@@ -92,40 +94,83 @@ function checkInputs(event) {
   const red = '1px solid var(--red)';
   const aqwa = '1px solid var(--aqwa)';
 
-  if (event.target.hasAttribute('required') && event.target === firstName) {
-    if ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
+  
+firstName.addEventListener('input', ()=>{
+  console.log('98', firstName)
+}) */
+const red = '1px solid var(--red)';
+const aqwa = '1px solid var(--aqwa)';
+let isFirstNameInputValid = false;
+let isFirstNameInputBlur = false;
+firstName.addEventListener('input', checkName);
+firstName.addEventListener('blur', () => {
+  isFirstNameInputBlur = true;
+  checkName();
+});
+
+function checkName (){
+  let firstNameValue = firstName.value.trim();
+    if (isFirstNameInputBlur && ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue)))) {
+      console.log(555)
       firstName.nextElementSibling.classList.remove('hide');
       firstName.style.border = red;
+      isFirstNameInputValid = false;
+      console.log(firstName.getAttribute('isValid'))
     } else {
       firstName.nextElementSibling.classList.add('hide');
       firstName.style.border = aqwa;
+      isFirstNameInputValid  = true;
+      console.log(firstName.getAttribute('isValid'))
+    }
+    firstName.setAttribute('isValid', isFirstNameInputValid);
+   // checkInputs();
+}
+  /* if (event.target.hasAttribute('required') && event.target === firstName) {
+    if ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
+      firstName.nextElementSibling.classList.remove('hide');
+      firstName.style.border = red;
+      firstName.setAttribute('isValid', 'false');
+    } else {
+      firstName.nextElementSibling.classList.add('hide');
+      firstName.style.border = aqwa;
+      firstName.setAttribute('isValid', 'true');
+      console.log(firstName.getAttribute('isValid'))
     }
   }
   if (event.target.hasAttribute('required') && event.target === surname) {
     if ((surnameValue === '') || (surnameValue.length < 5) || (!(/^[a-zA-Z]+$/i).test(surnameValue))) {
       surname.nextElementSibling.classList.remove('hide');
       surname.style.border = red;
+      surname.setAttribute('isValid', 'false');
     } else {
       surname.nextElementSibling.classList.add('hide');
       surname.style.border = aqwa;
+      surname.setAttribute('isValid', 'true');
+      console.log(surname.getAttribute('isValid'))
     }
   }
   if (event.target.hasAttribute('required') && event.target === street) {
     if ((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue))) {
       street.nextElementSibling.classList.remove('hide');
       street.style.border = red;
+      street.setAttribute('isValid', 'false');
     } else {
       street.nextElementSibling.classList.add('hide');
       street.style.border = aqwa;
+      street.setAttribute('isValid', 'true');
+      console.log(street.getAttribute('isValid'))
     }
   }
   if (event.target.hasAttribute('required') && event.target === house) {
     if ((houseValue === '') || (houseValue < 0) || (!(/^[0-9\s]+$/).test(houseValue))) {
       house.nextElementSibling.classList.remove('hide');
       house.style.border = red;
+      house.setAttribute('isValid', 'false');
     } else {
       house.nextElementSibling.classList.add('hide');
       house.style.border = aqwa;
+      house.setAttribute('isValid', 'true');
+      console.log(house.getAttribute('isValid'))
     }
   }
   if (event.target.hasAttribute('required') && event.target === flat) {
@@ -133,9 +178,12 @@ function checkInputs(event) {
     if ((flatValue === '') || (flatValue < 0) || (!(/^[1-9][0-9-]*$/).test(flatValue))) {
       flat.nextElementSibling.classList.remove('hide');
       flat.style.border = red;
+      flat.setAttribute('isValid', 'false');
     } else {
       flat.nextElementSibling.classList.add('hide');
       flat.style.border = aqwa;
+      flat.setAttribute('isValid', 'true');
+      console.log(flat.getAttribute('isValid'))
     }
   }
   if (event.target.hasAttribute('required') && event.target === date) {
@@ -152,13 +200,17 @@ function checkInputs(event) {
     if (date.value < dateValue) {
       date.nextElementSibling.classList.remove('hide');
       date.style.border = red;
+      date.setAttribute('isValid', 'false');
     } else {
       date.nextElementSibling.classList.add('hide');
       date.style.border = aqwa;
+      date.setAttribute('isValid', 'true');
+      console.log(date.getAttribute('isValid'))
     }
   }
+console.log(firstNameValue, surnameValue, streetValue, houseValue, flatValue, date.value)
 }
-
+ */
 function showOrderInfo(event) {
   event.preventDefault();
   modal.classList.remove('hide');
@@ -178,3 +230,17 @@ function resetForm() {
   form.reset();
   submit.disabled = true;
 };
+
+function checkIsValid() {
+ let arr = [firstName, surname, date, street, house, flat];
+ arr.every(item=>{
+  if(item.getAttribute('isValid') == true){
+    console.log("it is valid ", item.getAttribute('isValid'))
+  }
+ })
+/*  arr.forEach(item=>{
+  if(item.getAttribute('isValid') === true){
+    console.log(9999)
+  }
+ }) */
+}
