@@ -127,6 +127,7 @@
       }
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
+        localStorage.setItem('total', totalCost.textContent)
       }
       confirmOrder.classList.remove('hide');
     }

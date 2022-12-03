@@ -111,6 +111,8 @@ window.addEventListener('load', ()=>{
     </div>
   </li>`)
   });
+  
+    totalCost.textContent = localStorage.getItem('total');
 })
   /* const book = `
   <li class="card row">
