@@ -96,50 +96,36 @@ closeButton.addEventListener('click', closeModal);
 reset.addEventListener('click', resetForm);
 
 document.addEventListener('click', closeModalClickWindow);
-window.addEventListener('load', ()=>{
+
+window.addEventListener('load', () => {
   const booksInBag = JSON.parse(localStorage.getItem('booksArray') || '[]');
   booksInBag.forEach(book => {
-    console.log(book)
     bookList.insertAdjacentHTML('beforeend', `
     <li class="card row">
-    <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
-    <img src=${book.imgProp} alt="book image" class="card-img">
-    <div class="card-descr">
-      <p class="author">${book.authorProp}</p>
-      <p class="title">${book.titleProp}</p>
-      <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
-    </div>
-  </li>`)
+      <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
+      <img src=${book.imgProp} alt="book image" class="card-img">
+      <div class="card-descr">
+        <p class="author">${book.authorProp}</p>
+        <p class="title">${book.titleProp}</p>
+        <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
+      </div>
+    </li>
+  `);
   });
-  
-    totalCost.textContent = localStorage.getItem('total');
+
+  totalCost.textContent = localStorage.getItem('total');
 });
+
 bookList.addEventListener('click', deleteBook);
 
-function deleteBook(event){
+function deleteBook(event) {
   const bookInBag = bookList.querySelector('.card');
   const price = bookInBag.querySelector('.cost');
   if (event.target.closest('.close-icon')) {
     bookInBag.classList.add('hide');
     totalCost.textContent = totalCost.textContent - price.textContent;
   }
-}
-  /* const book = `
-  <li class="card row">
-    <img src=${localStorage.getItem('booksArray')} alt="book image" class="card-img">
-    <div class="card-descr">
-      <p class="author">${localStorage.getItem('author')}</p>
-      <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
-      <p class="title">${localStorage.getItem('title')}}</p>
-      <p class="price">$<span class="cost"data-cost=${localStorage.getItem('price')}>${localStorage.getItem('price')}</span></p>
-    </div>
-  </li>
-`; */
-/* bookList.insertAdjacentHTML('beforeend', book);
-  if (totalCost.textContent) {
-    totalCost.textContent = +totalCost.textContent + +localStorage.getItem('price');
-  }
-}) */
+};
 
 function createNewElement(parentSelector, el, attrs, text) {
   const parent = document.querySelector(parentSelector);
@@ -282,7 +268,7 @@ function showOrderInfo(event) {
 
 function closeModal() {
   modal.classList.add('hide');
-  modalTitle.innerHTML = ''
+  modalTitle.innerHTML = '';
 };
 
 function resetForm() {
@@ -290,8 +276,8 @@ function resetForm() {
   submit.disabled = true;
 };
 
-function closeModalClickWindow(event){
+function closeModalClickWindow(event) {
   if (event.target === modal) {
     closeModal();
   }
-}
+};
