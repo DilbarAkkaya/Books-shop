@@ -125,7 +125,7 @@
         console.log(arrayOfBooks)
       }
       if (totalCost.textContent) {
-        totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
+        totalCost.textContent = +totalCost.textContent + +price.textContent;
         localStorage.setItem('total', totalCost.textContent)
       }
       confirmOrder.classList.remove('hide');

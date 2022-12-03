@@ -114,15 +114,16 @@ window.addEventListener('load', () => {
   });
 
   totalCost.textContent = localStorage.getItem('total');
+  console.log(totalCost.textContent)
 });
 
 bookList.addEventListener('click', deleteBook);
 
-function deleteBook(event) {
-  const bookInBag = bookList.querySelector('.card');
-  const price = bookInBag.querySelector('.cost');
-  if (event.target.closest('.close-icon')) {
+function deleteBook(e) {
+  const bookInBag = e.target.closest('.card');
+  if (e.target.closest('.close-icon')) {
     bookInBag.classList.add('hide');
+    const price = bookInBag.querySelector('.cost');
     totalCost.textContent = totalCost.textContent - price.textContent;
   }
 };
