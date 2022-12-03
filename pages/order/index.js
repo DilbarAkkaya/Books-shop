@@ -109,8 +109,11 @@ window.addEventListener('load', ()=>{
     </div>
   </li>
 `;
-bookList.insertAdjacentHTML('beforeend', book)
+bookList.insertAdjacentHTML('beforeend', book);
   console.log(book)
+  if (totalCost.textContent) {
+    totalCost.textContent = +totalCost.textContent + +localStorage.getItem('price');
+  }
 })
 
 function createNewElement(parentSelector, el, attrs, text) {
