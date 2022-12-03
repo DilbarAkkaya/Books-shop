@@ -278,6 +278,7 @@ function closeModal() {
 function resetForm() {
   form.reset();
   submit.disabled = true;
+  localStorage.clear();
 };
 
 function closeModalClickWindow(event) {
