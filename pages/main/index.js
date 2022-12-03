@@ -1,46 +1,18 @@
 (async () => {
   const body = document.body;
   const fragment = new DocumentFragment();
-
-  function createNewElement(parentSelector, el, attrs, text) {
-    const parent = document.querySelector(parentSelector);
-    const newElement = document.createElement(el);
-    if (attrs) {
-      for (key in attrs) {
-        if (key == 'class') {
-          newElement.className = attrs[key];
-        } else if (key == 'id') {
-          newElement.id = attrs[key];
-        } else {
-          newElement.setAttribute(key, attrs[key]);
-        }
-      }
-    }
-    if (text) {
-      newElement.innerHTML = text;
-    }
-    parent.append(newElement);
-    return newElement;
-  }
-
   const header = document.createElement('header');
   header.className = 'header';
-
   const main = document.createElement('main');
   main.classList.add('main');
-
   const footer = document.createElement('footer');
   footer.classList.add('header');
-
   fragment.prepend(header);
   body.prepend(fragment);
-
   fragment.append(main);
   body.append(fragment);
-
   fragment.append(footer);
   body.append(fragment);
-
   const contentWrapper = createNewElement('header', 'div', { class: 'content-wrapper' });
   const headerWrapper = createNewElement('div.content-wrapper', 'div', { class: 'header-wrapper' });
   const logoWrapper = createNewElement('.header-wrapper', 'div', { class: 'logo-wrapper' });
@@ -53,9 +25,7 @@
   const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
   const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
   const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
-  //const bookWrapper = createNewElement('.bag-wrapper', 'div', {class: 'flex column'})
   const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
-  // const bookContainerImg = createNewElement('.card-list', 'img', { src: '../../assets/icons/close.svg', alt: 'img', class: 'close-icon hide'} )
   const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
   const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
   const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
@@ -71,7 +41,7 @@
     const response = await fetch(url);
     const data = await response.json();
     return data;
-  }
+  };
 
   let data = await getData();
 
@@ -92,21 +62,35 @@
                   <p class="title">${book.title}</p>
                   <p class="modal-descr">${book.description}</p>
                   <button class="button close">Close</button>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </li>`
+        </div>
+      </li>
+    `;
+    
     list.insertAdjacentHTML('beforeend', li
     );
   });
+
   list.addEventListener('click', (e) => {
     const card = e.target.closest('.card');
     const modal = card.querySelector('.modal');
     const price = card.querySelector('.cost');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
+    const liInBag = `
+      <li class="card row">
+        <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
+        <div class="card-descr">
+          <p class="author">${author.textContent}</p>
+          <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
+          <p class="title">${title.textContent}</p>
+          <p class="price">$<span class="cost"data-cost=${price.textContent}>${price.textContent}</span></p>
+        </div>
+      </li>
+    `;
 
     if (e.target.closest('.show-more')) {
       modal.classList.toggle('hide');
@@ -115,42 +99,58 @@
       modal.classList.add('hide');
     }
     if (e.target.closest('.add-bag')) {
-      bookList.insertAdjacentHTML('beforeend', `<li class="card row">
-        <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
-        <div class="card-descr">
-        <p class="author">${author.textContent}</p>
-        <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
-        <p class="title">${title.textContent}</p>
-        <p class="price">$<span class="cost"data-cost=${price.textContent}>${price.textContent}</span></p>
-</div>
-
-      </li>`);
+      bookList.insertAdjacentHTML('beforeend', liInBag);
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
       }
       confirmOrder.classList.remove('hide');
     }
-  })
+  });
+
   bookList.addEventListener('click', (e) => {
     const card = e.target.closest('.card');
     if (e.target.closest('.close-icon')) {
       card.classList.add('hide');
       const price = card.querySelector('.cost');
-      totalCost.textContent = totalCost.textContent - price.textContent
-    if (totalCost.textContent == 0) {
-      confirmOrder.classList.add('hide')
+      totalCost.textContent = totalCost.textContent - price.textContent;
+      if (totalCost.textContent == 0) {
+        confirmOrder.classList.add('hide');
+      }
     }
-    }
-  })
+  });
 
-  list.addEventListener('dragstart', dragstart)
+  list.addEventListener('dragstart', dragstart);
+
   bagWrapper.addEventListener('drop', drop);
-  bagWrapper.addEventListener('dragover', dragover)
-  confirmOrder.addEventListener('click', windowOpen)
 
-  function windowOpen(){
+  bagWrapper.addEventListener('dragover', dragover);
+
+  confirmOrder.addEventListener('click', windowOpen);
+
+  function createNewElement(parentSelector, el, attrs, text) {
+    const parent = document.querySelector(parentSelector);
+    const newElement = document.createElement(el);
+    if (attrs) {
+      for (key in attrs) {
+        if (key == 'class') {
+          newElement.className = attrs[key];
+        } else if (key == 'id') {
+          newElement.id = attrs[key];
+        } else {
+          newElement.setAttribute(key, attrs[key]);
+        }
+      }
+    }
+    if (text) {
+      newElement.innerHTML = text;
+    }
+    parent.append(newElement);
+    return newElement;
+  };
+
+  function windowOpen() {
     window.open('../order/index.html');
-  }
+  };
 
   function dragstart(event) {
     const card = event.target.closest('.card');
@@ -183,7 +183,7 @@
           <p class="price">$<span class="cost"data-cost=${priceText}>${priceText}</span></p>
         </div>
       </li>
-      `;
+    `;
 
     bookList.insertAdjacentHTML('beforeend', book);
     confirmOrder.classList.remove('hide');
@@ -195,5 +195,6 @@
   function dragover(event) {
     event.preventDefault();
   };
+
 })();
 
