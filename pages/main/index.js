@@ -74,13 +74,13 @@
     );
   });
 
-  list.addEventListener('click', (e) => {
-    const card = e.target.closest('.card');
+  list.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
     const modal = card.querySelector('.modal');
     const price = card.querySelector('.cost');
     const author = card.querySelector('.author');
     const title = card.querySelector('.title');
-    
+
     let liInBag = `
       <li class="card row">
         <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
@@ -93,17 +93,13 @@
       </li>
     `;
 
-    if (e.target.closest('.show-more')) {
+    if (event.target.closest('.show-more')) {
       modal.classList.toggle('hide');
     }
-    if (e.target.closest('.close')) {
+    if (event.target.closest('.close')) {
       modal.classList.add('hide');
     }
-    if (e.target.closest('.add-bag')) {
-      localStorage.setItem('title', `${title.textContent}`);
-      localStorage.setItem('author', `${author.textContent}`);
-      localStorage.setItem('price', `${price.textContent}`);
-      localStorage.setItem('img', `${card.children[0].currentSrc}`);
+    if (event.target.closest('.add-bag')) {
       let arrayOfBooks = [];
       bookList.insertAdjacentHTML('beforeend', liInBag);
       const liAllInBag = bookList.querySelectorAll('.card');
@@ -113,7 +109,6 @@
         const authorElement = liInBag.querySelector('.author');
         const titleElement = liInBag.querySelector('.title');
         const priceElement = liInBag.querySelector('.cost');
-        console.log(imageUrl)
         const bookProps = {
           imgProp: imageUrl,
           authorProp: authorElement.textContent,
@@ -122,7 +117,6 @@
         }
         arrayOfBooks.push(bookProps);
         localStorage.setItem('booksArray', JSON.stringify(arrayOfBooks));
-        console.log(arrayOfBooks)
       }
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.textContent;
@@ -132,9 +126,9 @@
     }
   });
 
-  bookList.addEventListener('click', (e) => {
-    const card = e.target.closest('.card');
-    if (e.target.closest('.close-icon')) {
+  bookList.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+    if (event.target.closest('.close-icon')) {
       card.classList.add('hide');
       const price = card.querySelector('.cost');
       totalCost.textContent = totalCost.textContent - price.textContent;
@@ -151,12 +145,6 @@
   bagWrapper.addEventListener('dragover', dragover);
 
   confirmOrder.addEventListener('click', windowOpen);
-  confirmOrder.addEventListener('click', ()=>{
-    const bagWrapper = document.querySelector('.bag-wrapper');
-
-    
-    console.log(bagWrapper);
-  });
 
   function createNewElement(parentSelector, el, attrs, text) {
     const parent = document.querySelector(parentSelector);
@@ -181,8 +169,6 @@
 
   function windowOpen() {
     window.open('../order/index.html');
-  
-
   };
 
   function dragstart(event) {
@@ -195,7 +181,6 @@
     event.dataTransfer.setData("title", title.textContent);
     event.dataTransfer.setData("urlForImage", url);
     event.dataTransfer.setData('price', price.textContent);
-    console.log(card)
   };
 
   function drop(event) {

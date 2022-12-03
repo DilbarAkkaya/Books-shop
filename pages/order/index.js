@@ -99,7 +99,7 @@ window.addEventListener('load', getBooksFromLocaleStorage);
 
 bookList.addEventListener('click', deleteBook);
 
-function getBooksFromLocaleStorage(){
+function getBooksFromLocaleStorage() {
   const booksInBag = JSON.parse(localStorage.getItem('booksArray') || '[]');
   booksInBag.forEach(book => {
     bookList.insertAdjacentHTML('beforeend', `
@@ -113,14 +113,14 @@ function getBooksFromLocaleStorage(){
         </div>
       </li>
     `
-  );
-});
+    );
+  });
   totalCost.textContent = localStorage.getItem('total');
 };
 
-function deleteBook(e) {
-  const bookInBag = e.target.closest('.card');
-  if (e.target.closest('.close-icon')) {
+function deleteBook(event) {
+  const bookInBag = event.target.closest('.card');
+  if (event.target.closest('.close-icon')) {
     bookInBag.classList.add('hide');
     const price = bookInBag.querySelector('.cost');
     totalCost.textContent = totalCost.textContent - price.textContent;
@@ -255,7 +255,7 @@ function checkInputs() {
   }
 };
 
-function changeStateSubmit(){
+function changeStateSubmit() {
   submit.disabled = !form.checkValidity();
 };
 
