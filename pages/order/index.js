@@ -109,7 +109,9 @@ let isStreetInputBlur = false;
 let isHouseInputValid = false;
 let isHouseInputBlur = false;
 let isFlatValid = false;
-let isFlatBlur = true;
+let isFlatBlur = false;
+let isDateValid = false;
+let isDateBlur = false;
 
 firstName.addEventListener('input', checkName);
 firstName.addEventListener('blur', () => {
@@ -136,6 +138,12 @@ flat.addEventListener('input', checkFlat);
 flat.addEventListener('blur', () => {
   isFlatBlur = true;
   checkFlat();
+});
+
+date.addEventListener('input', checkDate);
+date.addEventListener('blur', () => {
+  isDateBlur = true;
+  checkDate();
 });
 
 function checkSurname(){
@@ -196,6 +204,30 @@ function checkFlat(){
     isFlatValid = true;
   }
   flat.setAttribute('isValid', isFlatValid);
+ // checkInputs();
+}
+function checkDate() {
+  let dateValue = date.value;
+  const today = new Date();
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth() + 1;
+  const todayDate = today.getDate();
+  let tomorrow = todayDate + 1;
+  if ((tomorrow) < 10) {
+    tomorrow = "0" + tomorrow;
+  }
+  dateValue = todayYear + "-" + todayMonth + "-" + tomorrow;
+  if (isDateBlur && date.value < dateValue) {
+    date.nextElementSibling.classList.remove('hide');
+    date.style.border = red;
+    isDateValid = false;
+  } else {
+    date.nextElementSibling.classList.add('hide');
+    date.style.border = aqwa;
+    isDateValid = true;
+    console.log(date.getAttribute('isValid'))
+  }
+  date.setAttribute('isValid', isDateValid);
  // checkInputs();
 }
 function checkName (){
