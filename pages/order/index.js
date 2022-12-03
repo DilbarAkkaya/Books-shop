@@ -13,6 +13,7 @@ const titleLogo = createNewElement('.header-wrapper', 'h1', { class: 'title-main
 const sectionBag = createNewElement('.content-wrapper.flex', 'section', { class: 'section-bag' });
 const bagWrapper = createNewElement('.section-bag', 'div', { class: 'bag-wrapper column' });
 const sectionTitle = createNewElement('.bag-wrapper', 'h2', { class: 'bag-title' }, 'Your shopping bag');
+const bookList = createNewElement('.bag-wrapper', 'ul', { class: 'card-list' });
 const bagTotalContainer = createNewElement('.bag-wrapper', 'div', { class: 'total-container' });
 const totalText = createNewElement('.total-container', 'span', { class: 'total-text' }, 'Bag Total: $');
 const totalCost = createNewElement('.total-container', 'span', { class: 'total-cost' }, '0');
@@ -95,6 +96,22 @@ closeButton.addEventListener('click', closeModal);
 reset.addEventListener('click', resetForm);
 
 document.addEventListener('click', closeModalClickWindow);
+window.addEventListener('load', ()=>{
+ 
+  const book = `
+  <li class="card row">
+    <img src=${1} alt="book image" class="card-img">
+    <div class="card-descr">
+      <p class="author">${2}</p>
+      <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
+      <p class="title">${3}</p>
+      <p class="price">$<span class="cost"data-cost=${4}>${4}</span></p>
+    </div>
+  </li>
+`;
+bookList.insertAdjacentHTML('beforeend', book)
+  console.log(book)
+})
 
 function createNewElement(parentSelector, el, attrs, text) {
   const parent = document.querySelector(parentSelector);

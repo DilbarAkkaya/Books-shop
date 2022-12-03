@@ -69,7 +69,7 @@
         </div>
       </li>
     `;
-    
+
     list.insertAdjacentHTML('beforeend', li
     );
   });
@@ -99,6 +99,8 @@
       modal.classList.add('hide');
     }
     if (e.target.closest('.add-bag')) {
+      localStorage.setItem('title', `${title.textContent}`)
+      console.log(localStorage.title)
       bookList.insertAdjacentHTML('beforeend', liInBag);
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
@@ -126,6 +128,12 @@
   bagWrapper.addEventListener('dragover', dragover);
 
   confirmOrder.addEventListener('click', windowOpen);
+  confirmOrder.addEventListener('click', ()=>{
+    const bagWrapper = document.querySelector('.bag-wrapper');
+
+    
+    console.log(bagWrapper);
+  });
 
   function createNewElement(parentSelector, el, attrs, text) {
     const parent = document.querySelector(parentSelector);
@@ -150,6 +158,8 @@
 
   function windowOpen() {
     window.open('../order/index.html');
+  
+
   };
 
   function dragstart(event) {
