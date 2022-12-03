@@ -140,7 +140,6 @@ function checkStreet() {
     street.nextElementSibling.classList.add('hide');
     street.style.border = aqwa;
     isStreetInputValid = true;
-    console.log(street.getAttribute('isValid'))
   }
   surname.setAttribute('isValid', isStreetInputValid);
   checkInputs();
@@ -156,7 +155,6 @@ function checkHouse() {
     house.nextElementSibling.classList.add('hide');
     house.style.border = aqwa;
     isHouseInputValid = true;
-    console.log(house.getAttribute('isValid'))
   }
   house.setAttribute('isValid', isHouseInputValid);
   checkInputs();
@@ -196,7 +194,6 @@ function checkDate() {
     date.nextElementSibling.classList.add('hide');
     date.style.border = aqwa;
     isDateValid = true;
-    console.log(date.getAttribute('isValid'))
   }
   date.setAttribute('isValid', isDateValid);
   checkInputs();
@@ -205,24 +202,19 @@ function checkDate() {
 function checkName() {
   let firstNameValue = firstName.value.trim();
   if (isFirstNameInputBlur && ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue)))) {
-    console.log(555)
     firstName.nextElementSibling.classList.remove('hide');
     firstName.style.border = red;
     isFirstNameInputValid = false;
-    console.log(firstName.getAttribute('isValid'))
   } else {
     firstName.nextElementSibling.classList.add('hide');
     firstName.style.border = aqwa;
     isFirstNameInputValid = true;
-    console.log(firstName.getAttribute('isValid'))
   }
   firstName.setAttribute('isValid', isFirstNameInputValid);
   checkInputs();
 };
 
 function checkInputs() {
-  console.log(isFirstNameInputValid);
-
   if (isFirstNameInputValid && isSurnameInputValid && isStreetInputValid && isHouseInputValid && isFlatValid && isDateValid && isFirstNameInputBlur && isSurnameInputBlur && isStreetInputBlur && isHouseInputBlur && isFlatBlur && isDateBlur) {
     submit.disabled = false;
   } else {
