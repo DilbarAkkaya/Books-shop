@@ -97,10 +97,24 @@ reset.addEventListener('click', resetForm);
 
 document.addEventListener('click', closeModalClickWindow);
 window.addEventListener('load', ()=>{
- 
-  const book = `
+  const booksInBag = JSON.parse(localStorage.getItem('booksArray') || '[]');
+  booksInBag.every(book => {
+    console.log(book)
+    bookList.insertAdjacentHTML('beforeend', `
+    <li class="card row">
+    <img src=${book.imgProp} alt="book image" class="card-img">
+    <div class="card-descr">
+      <p class="author">${1}</p>
+      <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
+      <p class="title">${2}}</p>
+      <p class="price">$<span class="cost"data-cost=${2}>${2}</span></p>
+    </div>
+  </li>`)
+  });
+})
+  /* const book = `
   <li class="card row">
-    <img src=${localStorage.getItem('img')} alt="book image" class="card-img">
+    <img src=${localStorage.getItem('booksArray')} alt="book image" class="card-img">
     <div class="card-descr">
       <p class="author">${localStorage.getItem('author')}</p>
       <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
@@ -108,13 +122,12 @@ window.addEventListener('load', ()=>{
       <p class="price">$<span class="cost"data-cost=${localStorage.getItem('price')}>${localStorage.getItem('price')}</span></p>
     </div>
   </li>
-`;
-bookList.insertAdjacentHTML('beforeend', book);
-  console.log(book)
+`; */
+/* bookList.insertAdjacentHTML('beforeend', book);
   if (totalCost.textContent) {
     totalCost.textContent = +totalCost.textContent + +localStorage.getItem('price');
   }
-})
+}) */
 
 function createNewElement(parentSelector, el, attrs, text) {
   const parent = document.querySelector(parentSelector);

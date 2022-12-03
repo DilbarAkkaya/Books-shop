@@ -115,7 +115,8 @@
         const bookProps = {
           imgProp: imageUrl,
         }
-        arrayOfBooks.push(bookProps)
+        arrayOfBooks.push(bookProps);
+        localStorage.setItem('booksArray', JSON.stringify(arrayOfBooks));
         console.log(arrayOfBooks)
       }
       if (totalCost.textContent) {
