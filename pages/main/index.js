@@ -113,11 +113,13 @@
         const imageUrl = imageElement.currentSrc;
         const authorElement = liInBag.querySelector('.author');
         const titleElement = liInBag.querySelector('.title');
+        const priceElement = liInBag.querySelector('.cost');
         console.log(imageUrl)
         const bookProps = {
           imgProp: imageUrl,
           authorProp: authorElement.textContent,
           titleProp: titleElement.textContent,
+          priceProp: priceElement.textContent,
         }
         arrayOfBooks.push(bookProps);
         localStorage.setItem('booksArray', JSON.stringify(arrayOfBooks));

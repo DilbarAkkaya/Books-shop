@@ -107,7 +107,7 @@ window.addEventListener('load', ()=>{
       <p class="author">${book.authorProp}</p>
       <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
       <p class="title">${book.titleProp}</p>
-      <p class="price">$<span class="cost"data-cost=${2}>${2}</span></p>
+      <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
     </div>
   </li>`)
   });
