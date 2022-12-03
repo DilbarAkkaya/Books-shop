@@ -102,11 +102,49 @@ const red = '1px solid var(--red)';
 const aqwa = '1px solid var(--aqwa)';
 let isFirstNameInputValid = false;
 let isFirstNameInputBlur = false;
+let isSurnameInputValid = false;
+let isSurnameInputBlur = false;
+
 firstName.addEventListener('input', checkName);
 firstName.addEventListener('blur', () => {
   isFirstNameInputBlur = true;
   checkName();
 });
+surname.addEventListener('input', checkSurname);
+surname.addEventListener('blur', () => {
+  isSurnameInputBlur = true;
+  checkSurname();
+});
+function checkSurname(){
+  let surnameValue = surname.value.trim();
+  if (isSurnameInputBlur && ((surnameValue === '') || (surnameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(surnameValue)))) {
+    surname.nextElementSibling.classList.remove('hide');
+    surname.style.border = red;
+    isSurnameInputValid = false;
+  } else {
+    surname.nextElementSibling.classList.add('hide');
+    surname.style.border = aqwa;
+    isSurnameInputValid = true;
+  }
+  surname.setAttribute('isValid', isSurnameInputValid);
+ // checkInputs();
+};
+
+const checkStreet = () => {
+  let streetValue = street.value.trim();
+  if (!isStreetInputBlur && ((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue)))) {
+    street.nextElementSibling.classList.remove('hide');
+    street.style.border = red;
+    isStreetInputValid = false;
+  } else {
+    street.nextElementSibling.classList.add('hide');
+    street.style.border = aqwa;
+    isStreetInputValid = true;
+    console.log(street.getAttribute('isValid'))
+  }
+  surname.setAttribute('isValid', isStreetInputValid);
+  checkInputs();
+}
 
 function checkName (){
   let firstNameValue = firstName.value.trim();
@@ -125,6 +163,11 @@ function checkName (){
     firstName.setAttribute('isValid', isFirstNameInputValid);
    // checkInputs();
 }
+
+
+
+
+
   /* if (event.target.hasAttribute('required') && event.target === firstName) {
     if ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue))) {
       firstName.nextElementSibling.classList.remove('hide');
