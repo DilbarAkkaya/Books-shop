@@ -83,12 +83,12 @@
     
     let liInBag = `
       <li class="card row">
-        <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
+        <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
         <img src=${card.children[0].currentSrc} alt="book image" class="card-img">
         <div class="card-descr">
           <p class="author">${author.textContent}</p>
           <p class="title">${title.textContent}</p>
-          <p class="price">$<span class="cost"data-cost=${price.textContent}>${price.textContent}</span></p>
+          <p class="price">$<span class="cost" data-cost=${price.textContent}>${price.textContent}</span></p>
         </div>
       </li>
     `;
@@ -208,10 +208,10 @@
     const bookList = document.querySelector('.card-list');
     const book = `
       <li class="card row">
+        <img src="../../assets/icons/close.svg" class="close-icon" alt="close-icon">
         <img src=${urlForImage} alt="book image" class="card-img">
         <div class="card-descr">
           <p class="author">${authorText}</p>
-          <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
           <p class="title">${titleText}</p>
           <p class="price">$<span class="cost"data-cost=${priceText}>${priceText}</span></p>
         </div>
