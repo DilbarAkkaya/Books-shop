@@ -112,10 +112,12 @@
         const imageElement = liInBag.querySelector('.card-img');
         const imageUrl = imageElement.currentSrc;
         const authorElement = liInBag.querySelector('.author');
+        const titleElement = liInBag.querySelector('.title');
         console.log(imageUrl)
         const bookProps = {
           imgProp: imageUrl,
           authorProp: authorElement.textContent,
+          titleProp: titleElement.textContent,
         }
         arrayOfBooks.push(bookProps);
         localStorage.setItem('booksArray', JSON.stringify(arrayOfBooks));

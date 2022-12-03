@@ -106,7 +106,7 @@ window.addEventListener('load', ()=>{
     <div class="card-descr">
       <p class="author">${book.authorProp}</p>
       <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
-      <p class="title">${2}}</p>
+      <p class="title">${book.titleProp}</p>
       <p class="price">$<span class="cost"data-cost=${2}>${2}</span></p>
     </div>
   </li>`)
