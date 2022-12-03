@@ -108,6 +108,8 @@ let isStreetInputValid = false;
 let isStreetInputBlur = false;
 let isHouseInputValid = false;
 let isHouseInputBlur = false;
+let isFlatValid = false;
+let isFlatBlur = true;
 
 firstName.addEventListener('input', checkName);
 firstName.addEventListener('blur', () => {
@@ -130,6 +132,11 @@ house.addEventListener('blur', () => {
   checkHouse();
 });
 
+flat.addEventListener('input', checkFlat);
+flat.addEventListener('blur', () => {
+  isFlatBlur = true;
+  checkFlat();
+});
 
 function checkSurname(){
   let surnameValue = surname.value.trim();
@@ -176,6 +183,20 @@ function checkHouse() {
   }
   house.setAttribute('isValid', isHouseInputValid);
   //checkInputs();
+}
+function checkFlat(){
+  let flatValue = flat.value.trim();
+  if (isFlatBlur && ((flatValue === '') || (flatValue < 0) || (!(/^[1-9][0-9-]*$/).test(flatValue)))) {
+    flat.nextElementSibling.classList.remove('hide');
+    flat.style.border = red;
+    isFlatValid = false;
+  } else {
+    flat.nextElementSibling.classList.add('hide');
+    flat.style.border = aqwa;
+    isFlatValid = true;
+  }
+  flat.setAttribute('isValid', isFlatValid);
+ // checkInputs();
 }
 function checkName (){
   let firstNameValue = firstName.value.trim();
