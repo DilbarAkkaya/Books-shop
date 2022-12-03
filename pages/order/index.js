@@ -94,6 +94,8 @@ closeButton.addEventListener('click', closeModal);
 
 reset.addEventListener('click', resetForm);
 
+document.addEventListener('click', closeModalClickWindow);
+
 function createNewElement(parentSelector, el, attrs, text) {
   const parent = document.querySelector(parentSelector);
   const newElement = document.createElement(el);
@@ -242,3 +244,9 @@ function resetForm() {
   form.reset();
   submit.disabled = true;
 };
+
+function closeModalClickWindow(event){
+  if (event.target === modal) {
+    closeModal();
+  }
+}
