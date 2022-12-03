@@ -113,7 +113,16 @@ window.addEventListener('load', ()=>{
   });
   
     totalCost.textContent = localStorage.getItem('total');
-})
+});
+bookList.addEventListener('click', (e) => {
+  const card = e.target.closest('.card');
+  if (e.target.closest('.close-icon')) {
+    card.classList.add('hide');
+    const price = card.querySelector('.cost');
+    totalCost.textContent = totalCost.textContent - price.textContent;
+  }
+});
+
   /* const book = `
   <li class="card row">
     <img src=${localStorage.getItem('booksArray')} alt="book image" class="card-img">
