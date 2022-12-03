@@ -98,13 +98,13 @@ reset.addEventListener('click', resetForm);
 document.addEventListener('click', closeModalClickWindow);
 window.addEventListener('load', ()=>{
   const booksInBag = JSON.parse(localStorage.getItem('booksArray') || '[]');
-  booksInBag.every(book => {
+  booksInBag.forEach(book => {
     console.log(book)
     bookList.insertAdjacentHTML('beforeend', `
     <li class="card row">
     <img src=${book.imgProp} alt="book image" class="card-img">
     <div class="card-descr">
-      <p class="author">${1}</p>
+      <p class="author">${book.authorProp}</p>
       <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
       <p class="title">${2}}</p>
       <p class="price">$<span class="cost"data-cost=${2}>${2}</span></p>
