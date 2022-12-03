@@ -72,7 +72,6 @@ h2 {
 .main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .flex {
@@ -129,7 +128,9 @@ section {
   font-weight: 700;
 }
 
-
+.section-bag{
+  width: 40%;
+}
 .bag-wrapper {
   padding: 15px 7px;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
@@ -169,13 +170,13 @@ fieldset label {
 }
 form {
   display: flex;
-  justify-content: space-between;
+  min-width: 600px;
   background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink)0%, var(--grey) 100%);
   backdrop-filter: blur(6px);
   border: 1px solid #24C5DB;
   border-radius: 20px;
   padding: 10px 30px 10px 30px;
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
 }
 form span {
   color: var(--red);
@@ -286,16 +287,18 @@ input:valid{
   gap: 10px;
   margin-top: 10px;
   position: relative;
+  justify-content: flex-start;
 }
 .card-list .card{
     background: var(--white);
     padding-bottom: 0;
     border-radius: 3px;
+    justify-content: flex-start;
   }
 
 .card-list>.card>img {
-  width: 100px;
-  height: 120px;
+  width: 80px;
+  height: 100px;
   transition: none;
   padding: 5px;
 }
@@ -304,21 +307,23 @@ input:valid{
 }
 
 .card-list .title, .card-list .author, .card-list .card-descr{
- font-size: 14px;
+ font-size: 16px;
  text-align: start;
  align-items: flex-start;
+ white-space: break-spaces;
+ padding-right: 3px;
 }
 .card-list .card-descr{
   padding: 5px;
   position: relative;
 }
-.card-list .close-icon {
-  width: 20px;
-  height: 20px;
+.card-list>.card>.close-icon {
+  width: 15px;
+  height: 15px;
   position: absolute;
   padding: 0;
-  top: 0;
-  right: 5px;
+  top: 2px;
+  right: 2px;
   z-index: 10;
   cursor: pointer;
 }

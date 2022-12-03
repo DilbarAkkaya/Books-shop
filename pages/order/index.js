@@ -102,10 +102,10 @@ window.addEventListener('load', ()=>{
     console.log(book)
     bookList.insertAdjacentHTML('beforeend', `
     <li class="card row">
+    <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
     <img src=${book.imgProp} alt="book image" class="card-img">
     <div class="card-descr">
       <p class="author">${book.authorProp}</p>
-      <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
       <p class="title">${book.titleProp}</p>
       <p class="price">$<span class="cost"data-cost=${book.priceProp}>${book.priceProp}</span></p>
     </div>
