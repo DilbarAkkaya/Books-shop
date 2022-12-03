@@ -104,6 +104,10 @@ let isFirstNameInputValid = false;
 let isFirstNameInputBlur = false;
 let isSurnameInputValid = false;
 let isSurnameInputBlur = false;
+let isStreetInputValid = false;
+let isStreetInputBlur = false;
+let isHouseInputValid = false;
+let isHouseInputBlur = false;
 
 firstName.addEventListener('input', checkName);
 firstName.addEventListener('blur', () => {
@@ -115,6 +119,18 @@ surname.addEventListener('blur', () => {
   isSurnameInputBlur = true;
   checkSurname();
 });
+street.addEventListener('input', checkStreet);
+street.addEventListener('blur', () => {
+  isStreetInputBlur = true;
+  checkStreet();
+});
+house.addEventListener('input', checkHouse);
+house.addEventListener('blur', () => {
+  isHouseInputBlur = true;
+  checkHouse();
+});
+
+
 function checkSurname(){
   let surnameValue = surname.value.trim();
   if (isSurnameInputBlur && ((surnameValue === '') || (surnameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(surnameValue)))) {
@@ -130,9 +146,9 @@ function checkSurname(){
  // checkInputs();
 };
 
-const checkStreet = () => {
+function checkStreet() {
   let streetValue = street.value.trim();
-  if (!isStreetInputBlur && ((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue)))) {
+  if (isStreetInputBlur && ((streetValue === '') || (streetValue.length < 5) || (!(/^[a-zA-Z0-9\s]+$/i).test(streetValue)))) {
     street.nextElementSibling.classList.remove('hide');
     street.style.border = red;
     isStreetInputValid = false;
@@ -143,9 +159,24 @@ const checkStreet = () => {
     console.log(street.getAttribute('isValid'))
   }
   surname.setAttribute('isValid', isStreetInputValid);
-  checkInputs();
+ // checkInputs();
 }
 
+function checkHouse() {
+  let houseValue = house.value.trim();
+  if (isHouseInputBlur && ((houseValue === '') || (houseValue < 0) || (!(/^[0-9\s]+$/).test(houseValue)))) {
+    house.nextElementSibling.classList.remove('hide');
+    house.style.border = red;
+    isHouseInputValid = false;
+  } else {
+    house.nextElementSibling.classList.add('hide');
+    house.style.border = aqwa;
+    isHouseInputValid = true;
+    console.log(house.getAttribute('isValid'))
+  }
+  house.setAttribute('isValid', isHouseInputValid);
+  //checkInputs();
+}
 function checkName (){
   let firstNameValue = firstName.value.trim();
     if (isFirstNameInputBlur && ((firstNameValue === '') || (firstNameValue.length < 4) || (!(/^[a-zA-Z]+$/i).test(firstNameValue)))) {
