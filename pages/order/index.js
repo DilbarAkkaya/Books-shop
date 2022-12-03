@@ -100,12 +100,12 @@ window.addEventListener('load', ()=>{
  
   const book = `
   <li class="card row">
-    <img src=${1} alt="book image" class="card-img">
+    <img src=${localStorage.getItem('img')} alt="book image" class="card-img">
     <div class="card-descr">
-      <p class="author">${2}</p>
+      <p class="author">${localStorage.getItem('author')}</p>
       <img src=../../assets/icons/close.svg class="close-icon" alt="close-icon">
-      <p class="title">${3}</p>
-      <p class="price">$<span class="cost"data-cost=${4}>${4}</span></p>
+      <p class="title">${localStorage.getItem('title')}}</p>
+      <p class="price">$<span class="cost"data-cost=${localStorage.getItem('price')}>${localStorage.getItem('price')}</span></p>
     </div>
   </li>
 `;

@@ -99,8 +99,11 @@
       modal.classList.add('hide');
     }
     if (e.target.closest('.add-bag')) {
-      localStorage.setItem('title', `${title.textContent}`)
-      console.log(localStorage.title)
+      localStorage.setItem('title', `${title.textContent}`);
+      localStorage.setItem('author', `${author.textContent}`);
+      localStorage.setItem('price', `${price.textContent}`);
+      localStorage.setItem('img', `${card.children[0].currentSrc}`);
+      console.log(localStorage.img)
       bookList.insertAdjacentHTML('beforeend', liInBag);
       if (totalCost.textContent) {
         totalCost.textContent = +totalCost.textContent + +price.dataset.cost;
