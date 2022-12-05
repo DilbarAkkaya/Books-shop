@@ -49,7 +49,7 @@
   data.forEach((book, i) => {
     const li = `
         <li class="card column" data-id="${i}" draggable="true">
-          <img src="${book.imageLink}" alt="book image" class="card-img">
+          <img src=${book.imageLink} alt="book image" class="card-img">
           <div class="card-descr">
             <p class="author">${book.author}</p>
             <p class="title">${book.title}</p>
