@@ -44,7 +44,6 @@
   };
 
   let data = await getData();
-  console.log(data)
 
   data.forEach((book, i) => {
     const li = `
